@@ -11,5 +11,5 @@
   // Desactiva la comprobación de certificados para todas las extensiones,
   // así que quítalo cuando el catálogo venga de producción.
   //   "http.proxyStrictSSL": false
-  "yaml.schemaStore.url": "https://localhost:4321/api/v1/content/schemas"
+  "yaml.schemaStore.url": "https://localhost:4321/api/v1/content/schemas/test"
 }
