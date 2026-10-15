@@ -1,0 +1,18 @@
+---
+titulo: Crear una copia
+descripcion: Cómo dar de alta en Duplicati la copia de un servicio nuevo
+orden: 1
+servicios: [duplicati]
+actualizado: 2026-10-15
+---
+
+Cada servicio tiene su propia copia, con el nombre del servicio, para poder restaurarlo sin tocar los demás.
+
+1. **Origen**: `/source/<servicio>`, que es `/srv/<servicio>` de docker-01.
+2. **Destino**: `/backups/<servicio>`, la carpeta del NAS.
+3. **Cifrado**: AES-256 con una passphrase nueva, guardada en la bóveda como `duplicati-<servicio>`.
+4. **Horario**: cada noche a las 03:00, y se conservan 30 versiones.
+
+<Aviso tipo="peligro">
+Sin la passphrase, la copia no se puede restaurar. Comprueba que está en la bóveda antes de dar la copia por buena.
+</Aviso>

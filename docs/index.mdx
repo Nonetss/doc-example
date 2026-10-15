@@ -1,0 +1,37 @@
+---
+titulo: Homelab
+descripcion: Los servidores, servicios y copias de casa, y cómo encaja todo
+icono: house
+---
+
+Todo lo que hay montado en casa y en el VPS: qué es cada cosa, dónde corre y cómo se mantiene. Si es la primera vez, empieza por [Por dónde empiezo](empezar.mdx).
+
+## Servicios
+
+<Entidades tipo="servicios" agrupar="categoria" columnas="nombre,estado,resumen" />
+
+## Máquinas
+
+<Entidades tipo="maquinas" />
+
+## Cómo encaja todo
+
+```diagrama
+direccion: derecha
+zonas:
+  fuera:
+    titulo: Desde fuera
+    nodos: [vps]
+  casa:
+    titulo: Casa
+    nodos: [docker, nas, pve]
+nodos:
+  vps: { entidad: maquinas/vps-01 }
+  docker: { entidad: maquinas/docker-01 }
+  nas: { entidad: maquinas/nas }
+  pve: { entidad: maquinas/pve-01 }
+flechas:
+  - vps -> docker: túnel de Pangolin
+  - pve -> docker: la aloja
+  - docker -> nas: copias de Duplicati
+```

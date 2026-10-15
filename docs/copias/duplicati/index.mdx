@@ -1,0 +1,31 @@
+---
+titulo: Duplicati
+descripcion: Copias cifradas de los volúmenes de los stacks al NAS
+icono: archive
+servicios: [duplicati]
+maquinas: [docker-01, nas]
+actualizado: 2026-10-15
+pendientes:
+  - ¿Se ha probado alguna vez a restaurar una copia entera?
+---
+
+[Duplicati](catalogo:servicios/duplicati) copia cada noche las carpetas de `/srv` de [docker-01](catalogo:maquinas/docker-01) al [NAS](catalogo:maquinas/nas), cifradas con una passphrase por copia.
+
+## ¿Dónde busco…?
+
+| Quiero… | Ficha |
+| --- | --- |
+| Copiar un servicio nuevo | [Crear una copia](crear-backup.mdx) |
+
+## Cómo encaja todo
+
+```diagrama
+direccion: derecha
+nodos:
+  srv: { nombre: /srv, sub: volúmenes de los stacks, tipo: entrada }
+  duplicati: { entidad: servicios/duplicati }
+  nas: { entidad: maquinas/nas }
+flechas:
+  - srv -> duplicati: lee (solo lectura)
+  - duplicati -> nas: copia cifrada cada noche
+```
