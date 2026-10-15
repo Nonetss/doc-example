@@ -1,23 +1,23 @@
 ---
 name: homelab
-description: Cómo trabajar con el homelab documentado en esta plataforma. Úsala antes de tocar cualquier servidor, contenedor o copia de casa, o al documentar algo nuevo del homelab.
+description: How to work with the homelab documented on this platform. Use it before touching any home server, container or backup, or when documenting something new in the homelab.
 ---
 
 # Homelab
 
-Esta skill dice cómo trabajar, no qué hay. Lo que hay se consulta siempre en vivo en la plataforma, porque esta copia puede estar desfasada.
+This skill says how to work, not what there is. What there is is always looked up live on the platform, because this copy may be out of date.
 
-## Antes de tocar nada
+## Before touching anything
 
-- Busca el servicio en la documentación (`buscar`) y lee su ficha (`leer`) antes de actuar: dice dónde corre, cómo se despliega y qué pasa si se cae.
-- Casi todo corre en contenedores gestionados por Komodo. No toques un compose a mano en el servidor: cámbialo en Komodo.
-- Todo servicio con datos tiene su copia en Duplicati. Si levantas uno nuevo, crea también su copia.
+- Look the service up in the documentation (`search`) and read its page (`read`) before acting: it says where it runs, how it is deployed and what breaks if it goes down.
+- Almost everything runs in containers managed by Komodo. Never edit a compose file by hand on the server: change it in Komodo.
+- Every service with data has its backup in Duplicati. If you run a new one, create its backup too.
 
-## Credenciales
+## Credentials
 
-Nunca pidas una contraseña al usuario. Usa las conexiones de la plataforma (`conexiones`, `consultar`, `actuar`) y, si hace falta un secreto en una petición, su referencia `{{secreto:<nombre>}}`.
+Never ask the user for a password. Use the platform's connections (`connections`, `query`, `act`) and, when a request needs a secret, its reference `{{secret:<name>}}`.
 
-## Al documentar
+## When documenting
 
-- Cada servicio tiene su carpeta en `docs/` con un `index.mdx`, y su entidad en `catalogo/servicios/`.
-- Cada stack nuevo va a `catalogo/stacks/`, con el id `<servidor>-<proyecto>`.
+- Every service has its folder in `docs/` with an `index.mdx`, and its entity in `catalogo/services/`.
+- Every new stack goes to `catalogo/stacks/`, with the id `<server>-<project>`.
