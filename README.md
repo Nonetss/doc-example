@@ -29,7 +29,8 @@ no se compila ni se ejecuta nada.
 La plataforma lee un conjunto fijo de nombres, escritos en **español**, que
 deben quedarse exactamente como están: los ficheros y carpetas
 (`doc.config.yaml`, `menu.yaml`, `docs/`, `catalogo/`, `_tipo.yaml`,
-`diagramas/`), las claves de cada fichero YAML, los tipos de campo (`texto`,
+`diagramas/`), las claves de cada fichero YAML (las de los diagramas, que son
+JSON, van en inglés), los tipos de campo (`texto`,
 `ref`, `lista`…), la cabecera que tiene toda página (`titulo`, `descripcion`,
 `icono`, `orden`, `actualizado`) y los enlaces `catalogo:`. Todo lo demás es
 tuyo, en el idioma en que escribas. La tabla completa está en

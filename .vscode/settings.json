@@ -12,5 +12,13 @@
   // certificate checks for every extension, so remove it once the catalog
   // comes from production.
   //   "http.proxyStrictSSL": false
-  "yaml.schemaStore.url": "https://localhost:4321/api/v1/content/schemas/test"
+  "yaml.schemaStore.url": "https://localhost:4321/api/v1/content/schemas/test",
+  // The diagrams are JSON, which the YAML extension does not read: the
+  // editor's own JSON support takes their schema from the same repository.
+  "json.schemas": [
+    {
+      "fileMatch": ["/diagramas/*.json"],
+      "url": "https://localhost:4321/api/v1/content/schemas/test/diagram"
+    }
+  ]
 }

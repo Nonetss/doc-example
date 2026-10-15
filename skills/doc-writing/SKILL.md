@@ -14,14 +14,14 @@ This skill says how to work, not what the contract holds. The contract is explai
 
 ## Rules that never change
 
-- **The contract's names are Spanish and fixed** (`titulo`, `descripcion`, `catalogo/`, `_tipo.yaml`, `menu.yaml`, `diagramas/`…). Never translate or rename them; everything else is the site's own.
+- **The contract's names are Spanish and fixed** (`titulo`, `descripcion`, `catalogo/`, `_tipo.yaml`, `menu.yaml`, `diagramas/`…), except a diagram's keys, which are English (`title`, `nodes`, `edges`…). Never translate or rename them; everything else is the site's own.
 - **Pages have no code:** Markdown and the platform's components (`Callout`, `Entities`, `Diagram`) only. No `import`, `export` or expressions between braces.
 - **YAML wins over MDX:** a title or icon `menu.yaml` gives an entry is the one shown everywhere. Put the icons of the pages the menu shows in the menu, not in their headers.
 - **Every `icono` is a Lucide icon name.**
-- **One entity per file**, one diagram per file under `diagramas/`.
+- **One entity per file**, one diagram per JSON file under `diagramas/`, with every box, arrow and zone placed by hand (the guide's Diagrams page has the keys).
 - **Never write a secret:** write where it lives and which account to use.
 
 ## After writing
 
-- Every YAML validates against the platform's schema catalog (the editor marks it), and every link, `ref`, `ficha` and diagram `entidad` points at something that exists.
+- Every YAML and diagram validates against the platform's schemas (the editor marks it), and every link, `ref`, `ficha` and diagram `entity` or `page` points at something that exists.
 - After the push and the sync, open the changed pages as an admin: their problems show above the body, and those of `menu.yaml` and the diagrams on the repository's home.

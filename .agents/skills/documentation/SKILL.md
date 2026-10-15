@@ -72,12 +72,13 @@ this repository                         platform
 
 - **In the editor:** `.vscode/settings.json` points `yaml.schemaStore.url` at
   the platform's schema catalog for this repository. It completes and
-  validates `doc.config.yaml`, `menu.yaml`, every diagram, every `_tipo.yaml`
-  and every entity.
+  validates `doc.config.yaml`, `menu.yaml`, every `_tipo.yaml` and every
+  entity; `json.schemas` there points `diagramas/*.json` at the diagram
+  schema.
 - **On the platform:** after a push and a sync, every problem shows to admins
   on its page (those of `menu.yaml` and the diagrams on the home) and in the
   log. The platform keeps serving the last valid declarations while one is
   broken.
 - Before finishing, check that every link, `ref`, `ficha`, menu entry and
-  diagram `entidad` points at something that exists, and that no page lands in
+  diagram `entity` or `page` points at something that exists, and that no page lands in
   the "Otros" group.

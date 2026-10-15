@@ -17,8 +17,8 @@ catalogo/
 ├── header-fields/       # the fields every page header has
 └── components/          # the page components
 diagramas/
-├── pipeline.yaml        # from a push to the published site
-└── repository.yaml      # what a repository holds
+├── pipeline.json        # from a push to the published site
+└── repository.json      # what a repository holds
 skills/
 └── doc-writing/SKILL.md # served to other agents
 ```

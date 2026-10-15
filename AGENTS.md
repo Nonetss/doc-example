@@ -4,7 +4,7 @@ Un **repositorio de contenido de documentación** para la plataforma `doc`: la
 guía «Escribir documentación», que explica cómo escribir un repositorio de
 contenido y usa cada función que explica. También es el ejemplo que hay que
 copiar al empezar el tuyo. Solo contiene contenido: páginas (MDX), el menú,
-datos estructurados y diagramas (YAML) y las skills que la plataforma sirve a
+datos estructurados (YAML), diagramas (JSON) y las skills que la plataforma sirve a
 otros agentes. La plataforma, que es otro repositorio, lo clona, lo valida y lo
 publica. Aquí no se compila ni se ejecuta nada.
 
@@ -35,7 +35,7 @@ publica. Aquí no se compila ni se ejecuta nada.
 | `docs/` | Las páginas de la guía (`.mdx`). Cada carpeta es una sección con su `index.mdx` |
 | `catalogo/<type>/_tipo.yaml` | La declaración de un tipo de datos (los de este sitio describen el propio contrato) |
 | `catalogo/<type>/<id>.yaml` | Una entidad: el nombre del fichero es su id |
-| `diagramas/<id>.yaml` | Un diagrama, mostrado en las páginas con `<Diagram id="…" />` |
+| `diagramas/<id>.json` | Un diagrama, con sus cajas, flechas y zonas colocadas a mano, mostrado en las páginas con `<Diagram id="…" />` |
 | `skills/<name>/SKILL.md` | Skills que la plataforma **sirve a otros agentes** para trabajar con este sitio |
 | `.agents/skills/documentation/` | La skill para **ti**, el agente que escribe aquí |
 | `.claude/commands/questions.md` | `/questions`: rondas de preguntas para terminar de documentar una sección |
@@ -72,7 +72,9 @@ agentes; lo que entra aquí deja de ser secreto.
 ### No renombres el contrato
 
 La plataforma lee un conjunto fijo de nombres, escritos en español: `catalogo/`,
-`_tipo.yaml`, `menu.yaml`, `diagramas/`, las claves de todo fichero YAML, los
+`_tipo.yaml`, `menu.yaml`, `diagramas/`, las claves de todo fichero YAML (las de
+los diagramas JSON son las de los esquemas de la documentación anterior, en
+inglés), los
 tipos de campo, la cabecera común de página (`titulo`, `descripcion`, `icono`,
 `orden`, `actualizado`), `fuente` y los enlaces `catalogo:`. Traducirlos rompe
 la validación. Todo lo demás (ids de tipo, nombres de campo, valores, carpetas,
@@ -110,9 +112,10 @@ a una página.
 
 ## Validación
 
-- El editor valida cada fichero YAML, incluidos `menu.yaml` y los diagramas, a
-  través del catálogo de esquemas de la plataforma (`yaml.schemaStore.url` en
-  `.vscode/settings.json`, que requiere la extensión YAML de Red Hat).
+- El editor valida cada fichero YAML, incluido `menu.yaml`, a través del
+  catálogo de esquemas de la plataforma (`yaml.schemaStore.url` en
+  `.vscode/settings.json`, que requiere la extensión YAML de Red Hat), y cada
+  diagrama con el esquema de diagramas (`json.schemas`, en el mismo fichero).
 - La plataforma valida cada push al sincronizar (al instante en un repositorio
   alojado en ella, en cinco minutos como máximo, o de inmediato desde
   `/admin/content`). Las declaraciones inválidas (`doc.config.yaml`,
@@ -121,8 +124,8 @@ a una página.
   ven cada problema en su página (los de `menu.yaml` y los diagramas, en la
   portada), y el log los recoge todos.
 - Antes de dar algo por terminado: todo YAML que hayas tocado valida, y todo
-  enlace, campo `ficha`, referencia, entrada de menú y `entidad` de diagrama
-  apunta a algo que existe.
+  enlace, campo `ficha`, referencia, entrada de menú y `entity` o `page` de
+  diagrama apunta a algo que existe.
 
 ## Commits
 
