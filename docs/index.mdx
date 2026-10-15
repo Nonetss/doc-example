@@ -1,37 +1,37 @@
 ---
 titulo: Homelab
-descripcion: Los servidores, servicios y copias de casa, y cómo encaja todo
+descripcion: The home servers, services and backups, and how it all fits together
 icono: house
 ---
 
-Todo lo que hay montado en casa y en el VPS: qué es cada cosa, dónde corre y cómo se mantiene. Si es la primera vez, empieza por [Por dónde empiezo](empezar.mdx).
+Everything running at home and on the VPS: what each thing is, where it runs and how it is kept. If this is your first time here, start with [Getting started](getting-started.mdx).
 
-## Servicios
+## Services
 
-<Entidades tipo="servicios" agrupar="categoria" columnas="nombre,estado,resumen" />
+<Entities type="services" group="category" columns="name,status,summary" />
 
-## Máquinas
+## Machines
 
-<Entidades tipo="maquinas" />
+<Entities type="machines" />
 
-## Cómo encaja todo
+## How it all fits together
 
-```diagrama
-direccion: derecha
-zonas:
-  fuera:
-    titulo: Desde fuera
-    nodos: [vps]
-  casa:
-    titulo: Casa
-    nodos: [docker, nas, pve]
-nodos:
-  vps: { entidad: maquinas/vps-01 }
-  docker: { entidad: maquinas/docker-01 }
-  nas: { entidad: maquinas/nas }
-  pve: { entidad: maquinas/pve-01 }
-flechas:
-  - vps -> docker: túnel de Pangolin
-  - pve -> docker: la aloja
-  - docker -> nas: copias de Duplicati
+```diagram
+direction: right
+zones:
+  outside:
+    title: From outside
+    nodes: [vps]
+  home:
+    title: Home
+    nodes: [docker, nas, pve]
+nodes:
+  vps: { entity: machines/vps-01 }
+  docker: { entity: machines/docker-01 }
+  nas: { entity: machines/nas }
+  pve: { entity: machines/pve-01 }
+edges:
+  - vps -> docker: Pangolin tunnel
+  - pve -> docker: hosts it
+  - docker -> nas: Duplicati backups
 ```

@@ -1,0 +1,18 @@
+---
+titulo: Create a backup
+descripcion: How to add the backup of a new service to Duplicati
+orden: 1
+services: [duplicati]
+actualizado: 2026-10-15
+---
+
+Every service has its own backup, named after it, so it can be restored without touching the others.
+
+1. **Source**: `/source/<service>`, which is `/srv/<service>` on docker-01.
+2. **Destination**: `/backups/<service>`, the NAS folder.
+3. **Encryption**: AES-256 with a new passphrase, stored in the vault as `duplicati-<service>`.
+4. **Schedule**: every night at 03:00, keeping 30 versions.
+
+<Callout type="danger">
+Without the passphrase the backup cannot be restored. Check it is in the vault before calling the backup done.
+</Callout>

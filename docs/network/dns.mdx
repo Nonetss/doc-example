@@ -1,0 +1,24 @@
+---
+titulo: DNS
+descripcion: AdGuard Home resolves the home names and blocks ads
+services: [adguard]
+machines: [docker-01]
+actualizado: 2026-10-15
+open_questions:
+  - Does the router hand out AdGuard over DHCP, or do some devices have the DNS set by hand?
+---
+
+## What it is
+
+[AdGuard Home](catalogo:services/adguard) is the DNS for the whole home network. It resolves the internal names (`*.home.example`) and forwards the rest to Quad9, stripping ads and tracking.
+
+## Current setup
+
+- It runs in the [docker-01-adguard](catalogo:stacks/docker-01-adguard) stack, on [docker-01](catalogo:machines/docker-01).
+- The internal names are DNS rewrites: every `service.home.example` points at `192.168.1.20`.
+
+## Notes
+
+<Callout type="danger">
+If docker-01 goes down, the DNS of the whole house goes with it. There is no second DNS.
+</Callout>

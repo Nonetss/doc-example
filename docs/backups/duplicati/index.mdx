@@ -1,0 +1,31 @@
+---
+titulo: Duplicati
+descripcion: Encrypted backups of the stacks' volumes to the NAS
+icono: archive
+services: [duplicati]
+machines: [docker-01, nas]
+actualizado: 2026-10-15
+open_questions:
+  - Has a full backup ever been restored as a test?
+---
+
+[Duplicati](catalogo:services/duplicati) backs up the `/srv` folders of [docker-01](catalogo:machines/docker-01) to the [NAS](catalogo:machines/nas) every night, encrypted with one passphrase per backup.
+
+## Where do I find…?
+
+| I want to… | Page |
+| --- | --- |
+| Back up a new service | [Create a backup](create-backup.mdx) |
+
+## How it all fits together
+
+```diagram
+direction: right
+nodes:
+  srv: { name: /srv, sub: the stacks' volumes, kind: input }
+  duplicati: { entity: services/duplicati }
+  nas: { entity: machines/nas }
+edges:
+  - srv -> duplicati: reads (read-only)
+  - duplicati -> nas: encrypted backup every night
+```

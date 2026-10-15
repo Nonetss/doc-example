@@ -1,0 +1,17 @@
+---
+titulo: New stack
+descripcion: How to run a new service on docker-01 with Komodo
+orden: 1
+services: [komodo]
+machines: [docker-01]
+actualizado: 2026-10-15
+---
+
+1. In Komodo, **Stacks → New Stack**, with the server `docker-01` and the compose file written in the UI.
+2. The data goes under `/srv/<service>/`, mounted as volumes, so [Duplicati](../../backups/duplicati/index.mdx) backs it up.
+3. If it is published to the outside, add it to Pangolin.
+4. Add its stack to the catalog (`catalogo/stacks/docker-01-<service>.yaml`) and, if it has a page, the service to `catalogo/services/`.
+
+<Callout type="info">
+The platform's `komodo` connection can create the stack without opening the UI.
+</Callout>
