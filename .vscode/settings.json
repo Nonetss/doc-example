@@ -3,5 +3,13 @@
   // sirve la plataforma a partir del contenido que lee, así que no hay
   // schemas que generar ni commitear: un tipo, una entidad o una ficha nuevos
   // salen solos. Cambia la URL por la de la plataforma en producción.
+  //
+  // En desarrollo (https://localhost:4321) la extensión YAML no se fía del
+  // certificado de la CA local de Caddy y no descarga el catálogo. Hay que
+  // poner esto en los ajustes de USUARIO del editor, no aquí: los ajustes
+  // http.* solo valen a nivel de usuario y el editor los ignora en .vscode/.
+  // Desactiva la comprobación de certificados para todas las extensiones,
+  // así que quítalo cuando el catálogo venga de producción.
+  //   "http.proxyStrictSSL": false
   "yaml.schemaStore.url": "https://localhost:4321/api/v1/content/schemas"
 }
