@@ -1,6 +1,0 @@
-nombre: Pangolin
-categoria: red
-estado: pendiente
-resumen: Proxy inverso con túnel que publica los servicios de casa hacia fuera
-url: https://pangolin.example
-maquina: vps-01

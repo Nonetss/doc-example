@@ -1,23 +1,27 @@
-# Configuración del sitio. Lo demás (menú, secciones, catálogo) sale de las
-# carpetas: docs/ son las fichas y catalogo/ los datos estructurados.
+# Site configuration. Everything else (menu, sections, catalog) comes from the
+# folders: docs/ holds the pages and catalogo/ the structured data.
+#
+# The keys of this file and of every _tipo.yaml (nombre, cabecera, campos,
+# tipo: texto...) are the platform's contract and are read as they are. The
+# values, the type ids and the field names are this site's own.
 
 nombre: Homelab
-descripcion: Documentación de los servidores, servicios y copias de casa
-plataforma: "1" # versión mayor del contrato con la plataforma
+descripcion: Documentation of the home servers, services and backups
+plataforma: "1" # major version of the platform contract this site targets
 
-# Campos extra de la cabecera de las fichas. Los comunes (titulo,
-# descripcion, icono, orden, actualizado) los pone la plataforma. Usan los
-# mismos tipos de campo que el catálogo (ver catalogo/*/_tipo.yaml).
+# Extra header fields for the pages. The platform already gives every page
+# titulo, descripcion, icono, orden and actualizado. These use the same field
+# kinds as the catalog (see catalogo/*/_tipo.yaml).
 cabecera:
-  servicios:
+  services:
     tipo: lista
-    de: { tipo: ref, a: servicios }
-    descripcion: Servicios de los que habla la ficha
-  maquinas:
+    de: { tipo: ref, a: services }
+    descripcion: Services the page is about
+  machines:
     tipo: lista
-    de: { tipo: ref, a: maquinas }
-    descripcion: Máquinas de las que habla la ficha
-  pendientes:
+    de: { tipo: ref, a: machines }
+    descripcion: Machines the page is about
+  open_questions:
     tipo: lista
     de: { tipo: texto }
-    descripcion: Preguntas abiertas, se juntan en una página de pendientes
+    descripcion: Questions still open; a question round answers them (/questions)

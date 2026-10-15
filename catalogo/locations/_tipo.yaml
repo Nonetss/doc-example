@@ -1,0 +1,21 @@
+nombre: Location
+plural: Locations
+icono: map-pin
+descripcion: Where a machine physically is, at home or at a provider
+
+etiqueta: name
+
+campos:
+  name:
+    tipo: texto
+  network:
+    tipo: texto
+    opcional: true
+    descripcion: Local network range in CIDR (192.168.1.0/24)
+  provider:
+    tipo: texto
+    opcional: true
+    descripcion: Company that hosts it, when it is not home
+
+vista:
+  columnas: [name, network, provider]

@@ -1,7 +1,0 @@
-nombre: AdGuard Home
-categoria: red
-estado: documentado
-resumen: El DNS de casa, con bloqueo de publicidad y los nombres internos
-url: https://adguard.casa.example
-maquina: docker-01
-ficha: red/dns

@@ -1,0 +1,7 @@
+name: Komodo
+category: containers
+status: documented
+summary: Manages the Docker Compose stacks of the servers
+url: https://komodo.home.example
+machine: docker-01
+page: containers/komodo

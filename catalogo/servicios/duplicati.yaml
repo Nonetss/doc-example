@@ -1,7 +1,0 @@
-nombre: Duplicati
-categoria: copias
-estado: parcial
-resumen: Copias cifradas de los volúmenes de los stacks al NAS
-url: https://duplicati.casa.example
-maquina: docker-01
-ficha: copias/duplicati

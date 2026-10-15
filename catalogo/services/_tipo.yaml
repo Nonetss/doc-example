@@ -1,0 +1,33 @@
+nombre: Service
+plural: Services
+icono: box
+descripcion: Every application or piece of infrastructure that is documented
+
+etiqueta: name
+
+campos:
+  name:
+    tipo: texto
+  category:
+    tipo: enum
+    valores: [network, containers, backups, identity, monitoring]
+  status:
+    tipo: enum
+    valores: [documented, partial, pending]
+    descripcion: How much of it is documented, not whether it works
+  summary:
+    tipo: texto
+    descripcion: One line on what it is
+  url:
+    tipo: url
+    opcional: true
+  machine:
+    tipo: ref
+    a: machines
+    descripcion: Where it runs
+  page:
+    tipo: ficha
+    opcional: true
+
+vista:
+  columnas: [name, category, status, summary, machine]

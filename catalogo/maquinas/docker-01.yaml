@@ -1,9 +1,0 @@
-ip: 192.168.1.20
-ubicacion: casa
-clase: vm
-anfitrion: pve-01
-so: Debian 13
-uso: Los contenedores de casa, gestionados por Komodo
-ficha: contenedores/komodo
-fuente: manual
-actualizado: 2026-10-15

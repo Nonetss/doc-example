@@ -1,8 +1,0 @@
-nombre: PVE-01
-ip: 192.168.1.10
-ubicacion: casa
-clase: fisica
-so: Proxmox VE 9
-uso: El hipervisor de casa, donde corren todas las vm
-fuente: manual
-actualizado: 2026-10-15

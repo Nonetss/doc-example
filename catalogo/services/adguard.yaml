@@ -1,0 +1,7 @@
+name: AdGuard Home
+category: network
+status: documented
+summary: The home DNS, with ad blocking and the internal names
+url: https://adguard.home.example
+machine: docker-01
+page: network/dns

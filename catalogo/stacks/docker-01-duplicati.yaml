@@ -1,14 +1,14 @@
-nombre: duplicati
-servidor: docker-01
-origen: komodo
-servicio: duplicati
-contenedores:
-  - nombre: duplicati
-    imagen: lscr.io/linuxserver/duplicati:2.1.0
-    puertos: ["8200:8200"]
-    volumenes:
+name: duplicati
+server: docker-01
+origin: komodo
+service: duplicati
+containers:
+  - name: duplicati
+    image: lscr.io/linuxserver/duplicati:2.1.0
+    ports: ["8200:8200"]
+    volumes:
       - /srv/duplicati/config:/config
       - /srv:/source:ro
-      - /mnt/nas/copias:/backups
+      - /mnt/nas/backups:/backups
 fuente: komodo
 actualizado: 2026-10-15

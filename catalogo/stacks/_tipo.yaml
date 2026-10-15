@@ -1,45 +1,45 @@
 nombre: Stack
 plural: Stacks
 icono: layers
-descripcion: Cada proyecto de Docker Compose de un servidor. El id es servidor y proyecto (docker-01-adguard)
+descripcion: Every Docker Compose project on a server. The id is the server and the project (docker-01-adguard)
 
-etiqueta: nombre
+etiqueta: name
 
 campos:
-  nombre:
+  name:
     tipo: texto
-    descripcion: El nombre del proyecto de compose
-  servidor:
+    descripcion: The compose project name
+  server:
     tipo: ref
-    a: maquinas
-  origen:
+    a: machines
+  origin:
     tipo: enum
     valores: [komodo, compose]
-    descripcion: komodo si es un stack de Komodo, compose si está puesto a mano
-  servicio:
+    descripcion: komodo for a Komodo stack, compose for one set up by hand
+  service:
     tipo: ref
-    a: servicios
+    a: services
     opcional: true
-    descripcion: El servicio documentado que levanta este stack
-  contenedores:
+    descripcion: The documented service this stack runs
+  containers:
     tipo: lista
     de:
       tipo: objeto
       campos:
-        nombre:
+        name:
           tipo: texto
-        imagen:
+        image:
           tipo: texto
-        puertos:
+        ports:
           tipo: lista
           de: { tipo: texto }
           opcional: true
-          descripcion: Publicado:interno (8080:80)
-        volumenes:
+          descripcion: Published:internal (8080:80)
+        volumes:
           tipo: lista
           de: { tipo: texto }
           opcional: true
-          descripcion: Carpeta del servidor:ruta del contenedor
+          descripcion: Server folder:container path
 
 vista:
-  columnas: [nombre, servidor, origen, servicio]
+  columnas: [name, server, origin, service]
