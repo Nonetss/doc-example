@@ -1,8 +1,10 @@
 # AGENTS.md
 
-A **documentation content repository** for the `doc` platform, and the example
-to copy when starting your own. It holds only content: pages (MDX), structured
-data (YAML) and the skills the platform serves to other agents. The platform,
+A **documentation content repository** for the `doc` platform: the "Writing
+documentation" guide, which explains how to write a content repository and
+uses every feature it explains. It is also the example to copy when starting
+your own. It holds only content: pages (MDX), the menu, structured data and
+diagrams (YAML) and the skills the platform serves to other agents. The platform,
 a separate repository, clones it, validates it and publishes it. Nothing here
 is built or run.
 
@@ -28,9 +30,11 @@ is built or run.
 | Path | What it holds |
 | --- | --- |
 | `doc.config.yaml` | The site: name, platform contract version, extra page header fields |
-| `docs/` | The pages (`.mdx`). Every folder is a menu section with its `index.mdx` |
-| `catalogo/<type>/_tipo.yaml` | The declaration of a data type |
+| `menu.yaml` | The sidebar's groups; what it says about an entry wins over page headers |
+| `docs/` | The guide's pages (`.mdx`). Every folder is a section with its `index.mdx` |
+| `catalogo/<type>/_tipo.yaml` | The declaration of a data type (this site's describe the contract itself) |
 | `catalogo/<type>/<id>.yaml` | One entity: the file name is its id |
+| `diagramas/<id>.yaml` | One diagram, shown in pages with `<Diagram id="…" />` |
 | `skills/<name>/SKILL.md` | Skills the platform **serves to other agents** to work with this site |
 | `.agents/skills/documentation/` | The skill for **you**, the agent writing here |
 | `.claude/commands/questions.md` | `/questions`: question rounds to finish documenting a section |
@@ -42,9 +46,10 @@ Details and conventions: the `documentation` skill.
 
 Before writing or changing anything, load the `documentation` skill (Skill
 tool in Claude Code, or read `.agents/skills/documentation/SKILL.md`). Its
-`SKILL.md` holds the mental model (contract names vs this site's names), the
-rules that always apply and a routing table to the reference for the task:
-layout, pages, catalog, diagrams, served skills and question rounds. Read only
+`SKILL.md` holds the mental model (the guide documents the contract and uses
+it; contract names vs this site's names), the rules that always apply and a
+routing table to the reference for the task: layout and menu, pages, catalog,
+diagrams, served skills and question rounds. Read only
 the references the task needs; a task crossing areas reads several.
 
 ## Hard rules
@@ -64,7 +69,7 @@ cloned onto servers and read by agents; whatever goes in stops being secret.
 ### Don't rename the contract
 
 The platform reads a fixed set of names, written in Spanish: `catalogo/`,
-`_tipo.yaml`, the keys of `doc.config.yaml` and `_tipo.yaml`, the field kinds,
+`_tipo.yaml`, `menu.yaml`, `diagramas/`, the keys of every YAML file, the field kinds,
 the common page header (`titulo`, `descripcion`, `icono`, `orden`,
 `actualizado`), `fuente` and `catalogo:` links. Translating them breaks
 validation. Everything else (type ids, field names, values, folders, prose) is
@@ -79,8 +84,16 @@ a page header field `doc.config.yaml` does not declare under `cabecera`.
 
 ### Pages have no code
 
-Markdown and the platform's components only. Never `import`, `export` or
-`{…}` expressions: the platform rejects them.
+Markdown and the platform's components (`Callout`, `Entities`, `Diagram`)
+only. Never `import`, `export` or `{…}` expressions: the platform rejects them.
+In prose, write anything with `<` or `{` inside backticks.
+
+### The menu and the YAML win
+
+Every page must be shown by `menu.yaml`; none may land in "Otros". Icons of
+the pages the menu shows are given there, not in their headers, and a title
+set in the menu must match the page's `titulo`. Every `icono` is a Lucide icon
+name.
 
 ### One entity per file
 
@@ -90,14 +103,19 @@ page.
 
 ## Validation
 
-- The editor validates every YAML file through the platform's schema catalog
+- The editor validates every YAML file, `menu.yaml` and the diagrams included,
+  through the platform's schema catalog
   (`yaml.schemaStore.url` in `.vscode/settings.json`, which needs the Red Hat
   YAML extension).
-- The platform validates each push when it syncs (within five minutes, or right
-  away from `/admin/content`). Invalid content never replaces valid content; the
-  problems are logged with their file and reason.
+- The platform validates each push when it syncs (at once for a hosted
+  repository, within five minutes, or right away from `/admin/content`).
+  Invalid declarations (`doc.config.yaml`, `menu.yaml`, a `_tipo.yaml`) never
+  replace valid ones; a broken page, entity or diagram is reported and the
+  rest is published. Admins see each problem on its page (those of
+  `menu.yaml` and the diagrams on the home), and the log has them all.
 - Before calling something done: every YAML you touched validates, and every
-  link, `ficha` field and reference points at something that exists.
+  link, `ficha` field, reference, menu entry and diagram `entidad` points at
+  something that exists.
 
 ## Commits
 

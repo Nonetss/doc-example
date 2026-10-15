@@ -1,6 +1,6 @@
 ---
 description: Run a question round to finish documenting a section, or apply the answers already written in questions.md
-argument-hint: <section> (e.g. backups, network, containers)
+argument-hint: <section> (e.g. repository, pages, catalog, publishing)
 ---
 
 Run a **question round** as described in the `documentation` skill,
@@ -25,13 +25,15 @@ Pick the phase from the state of the repository:
    answer. Do not ask what is already answered or what can be looked up.
 3. Write `questions.md` at the repository root in the format of the reference:
    a `# Questions: <Section>` title, the three lines of instructions, the
-   questions grouped by topic under `##` headings with what breaks first, each
+   questions grouped by topic under `##` headings with the most common need first, each
    question in bold with just enough context, and an empty `>` line under it.
-4. Follow "What to ask and what not" strictly: these are handover docs, not an
-   audit. Ask how something is done, where it is and what breaks when someone
-   leaves. Do not ask about misconfigurations, maintenance chores, what someone
-   else owns or details one picks up with time. When a fact comes out of a
-   command, ask for the command output. Never ask for a secret's value.
+4. Follow "What to ask and what not" strictly: this guide is for whoever
+   writes documentation next, not a review of the platform. Ask what the
+   platform does in the cases a page doesn't cover, how something is done and
+   where it is. Do not ask how the platform's code works, what another page or
+   the catalog already answers, or about features that don't exist yet. When a
+   fact comes out of a command or a screen, ask for its output. Never ask for a
+   secret's value.
 5. Keep it short (around 15 questions at most), then tell me in a few lines
    what each section of the file asks about. Do not edit any page in this
    phase.
@@ -43,7 +45,7 @@ Pick the phase from the state of the repository:
    hand in between, and my changes stay.
 3. Move each answer to the page or entity where it belongs, written cleanly and
    without naming who answered. Follow every rule of the `documentation` skill
-   (header, catalog, MDX without code, links, images in the service's own
+   (header, catalog, MDX without code, links, images in the page's own
    `img/`). If an answer contains a secret, do not copy it anywhere: note
    where it should be stored and tell me.
 4. Close each open question completely: remove it from `open_questions` and
@@ -53,11 +55,9 @@ Pick the phase from the state of the repository:
    who runs it, and nothing more.
 5. When an answer can be read two ways, write the most sensible reading and
    list it in your reply so I can correct it.
-6. If the section has no open questions left, set `status: documented` on its
-   services in `catalogo/services/`.
-7. Check that every page and entity you touched still validates (header fields
+6. Check that every page and entity you touched still validates (header fields
    declared, ids and links that exist, YAML the editor accepts).
-8. Delete `questions.md` once every answer is applied. Do not commit: I commit
+7. Delete `questions.md` once every answer is applied. Do not commit: I commit
    when I ask for it.
-9. Reply with a short summary: what went where, what was closed without an
+8. Reply with a short summary: what went where, what was closed without an
    answer, and the readings you chose.

@@ -1,12 +1,12 @@
 # Question rounds
 
-To finish documenting a whole section (network, backups…) in one go, run a
+To finish documenting a whole section (repository, catalog…) in one go, run a
 **question round**: whoever writes (a person or an agent) prepares the
 questions, whoever knows the topic answers them roughly, and the writer moves
 the answers into the pages. It closes a section in one sitting instead of open
 question by open question.
 
-With Claude Code, **`/questions <section>`** (for example `/questions backups`)
+With Claude Code, **`/questions <section>`** (for example `/questions publishing`)
 writes the questions. Once they are answered, **`/questions`** again moves the
 answers into the pages.
 
@@ -17,20 +17,20 @@ answers into the pages.
    `catalogo/` for what is already answered, so it is not asked again.
 2. **Write the questions** in `questions.md` at the repository root (not under
    `docs/`: it is not documentation). Three lines of instructions on top, then
-   the questions grouped by topic, what breaks first going first. Each
+   the questions grouped by topic, the most common need going first. Each
    question in bold, with an empty `>` line under it for the answer:
 
    ```markdown
-   # Questions: Backups
+   # Questions: Publishing
 
    Answer under each one, roughly. If you don't know or don't care, write
    "don't know" or "doesn't matter" and it will be dropped. If someone else
    owns it, write their name.
 
-   ## 1. Duplicati
+   ## 1. Hosted repositories
 
-   1. **Restore test.** Has a full backup ever been restored? Paste the output
-      of `ls -la /mnt/nas/backups` on the NAS.
+   1. **Restoring one.** If the platform loses a hosted repository's history,
+      how is it brought back? Paste the backup command you use.
 
       >
    ```
@@ -49,22 +49,22 @@ answers into the pages.
      nothing more.
    - When an answer can be read two ways, write the most sensible reading and
      say which one was chosen, so it can be corrected.
-   - Screenshots go to the `img/` folder of the service that uses them.
-5. **Close the section.** When it has no open questions left, set `status:
-   documented` on its services in `catalogo/services/`, check that every YAML
-   still validates, and delete `questions.md`.
+   - Screenshots go to the `img/` folder next to the page that uses them.
+5. **Close the section.** When it has no open questions left, check that every
+   YAML still validates and delete `questions.md`.
 
 ## What to ask and what not
 
-These are handover docs for whoever comes next, **not an audit**. Ask **how
-something is done and where it is**, not whether it is done right.
+This guide is for whoever writes documentation next, **not a review of the
+platform**. Ask **what the platform does and how something is done**, not
+whether it is done right.
 
 | Ask | Don't ask |
 | --- | --- |
-| What breaks when someone leaves: personal accounts, keys only one person knows | Misconfigurations: a mistyped address, a relay, space that doesn't add up |
-| How something is done: restoring a backup, creating a machine, getting into a server | Maintenance chores: reboots, old kernels, repositories, nearly full disks |
-| Where something is: a key, a folder, a console | What someone else owns: noting that they run it is enough |
-| What something is for, when looking at it doesn't tell | Details everyone picks up with time |
+| What the platform does in a case the page doesn't cover: a broken file, an edge of the format | How the platform's code does it |
+| How something is done: registering a repository, setting up the editor | What can be read in another page or in the catalog |
+| Where something is: an admin screen, a setting, a file | Plans and features that don't exist yet |
+| What an option is for, when its name doesn't tell | Opinions on how the format should be |
 
 Also:
 
