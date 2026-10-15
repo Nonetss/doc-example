@@ -1,0 +1,21 @@
+nombre: Ubicación
+plural: Ubicaciones
+icono: map-pin
+descripcion: Dónde está físicamente una máquina, en casa o en un proveedor
+
+etiqueta: nombre
+
+campos:
+  nombre:
+    tipo: texto
+  red:
+    tipo: texto
+    opcional: true
+    descripcion: Rango de la red local en CIDR (192.168.1.0/24)
+  proveedor:
+    tipo: texto
+    opcional: true
+    descripcion: Empresa que la aloja, si no es casa
+
+vista:
+  columnas: [nombre, red, proveedor]

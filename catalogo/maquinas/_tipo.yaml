@@ -1,0 +1,38 @@
+nombre: Máquina
+plural: Máquinas
+icono: server
+descripcion: Servidores físicos, máquinas virtuales y VPS. El id es el hostname en minúsculas
+
+etiqueta: nombre
+
+campos:
+  nombre:
+    tipo: texto
+    opcional: true
+    descripcion: Solo si se escribe distinto del id (PVE-01)
+  ip:
+    tipo: ip
+  ubicacion:
+    tipo: ref
+    a: ubicaciones
+  clase:
+    tipo: enum
+    valores: [fisica, vm, vps]
+  anfitrion:
+    tipo: ref
+    a: maquinas
+    opcional: true
+    descripcion: La máquina física donde corre, si es una vm
+  so:
+    tipo: texto
+    descripcion: Sistema operativo y versión (Debian 13)
+  uso:
+    tipo: texto
+    descripcion: Una línea con para qué sirve
+  ficha:
+    tipo: ficha
+    opcional: true
+    descripcion: La ficha que la explica, si la tiene
+
+vista:
+  columnas: [nombre, ip, clase, ubicacion, uso]

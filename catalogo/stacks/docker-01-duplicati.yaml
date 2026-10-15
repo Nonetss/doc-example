@@ -1,0 +1,14 @@
+nombre: duplicati
+servidor: docker-01
+origen: komodo
+servicio: duplicati
+contenedores:
+  - nombre: duplicati
+    imagen: lscr.io/linuxserver/duplicati:2.1.0
+    puertos: ["8200:8200"]
+    volumenes:
+      - /srv/duplicati/config:/config
+      - /srv:/source:ro
+      - /mnt/nas/copias:/backups
+fuente: komodo
+actualizado: 2026-10-15

@@ -1,0 +1,13 @@
+nombre: adguard
+servidor: docker-01
+origen: komodo
+servicio: adguard
+contenedores:
+  - nombre: adguard
+    imagen: adguard/adguardhome:v0.107.65
+    puertos: ["53:53/udp", "53:53/tcp", "3000:3000"]
+    volumenes:
+      - /srv/adguard/work:/opt/adguardhome/work
+      - /srv/adguard/conf:/opt/adguardhome/conf
+fuente: komodo
+actualizado: 2026-10-15

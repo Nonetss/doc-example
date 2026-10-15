@@ -1,0 +1,7 @@
+nombre: Komodo
+categoria: contenedores
+estado: documentado
+resumen: Gestiona los stacks de Docker Compose de los servidores
+url: https://komodo.casa.example
+maquina: docker-01
+ficha: contenedores/komodo
