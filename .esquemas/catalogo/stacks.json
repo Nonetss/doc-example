@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "minLength": 1,
+      "description": "El nombre del proyecto de compose"
+    },
+    "servidor": {
+      "type": "string",
+      "enum": ["docker-01", "nas", "pve-01", "vps-01"]
+    },
+    "origen": {
+      "type": "string",
+      "enum": ["komodo", "compose"],
+      "description": "komodo si es un stack de Komodo, compose si está puesto a mano"
+    },
+    "servicio": {
+      "type": "string",
+      "enum": ["adguard", "duplicati", "komodo", "pangolin"],
+      "description": "El servicio documentado que levanta este stack"
+    },
+    "contenedores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "minLength": 1
+          },
+          "imagen": {
+            "type": "string",
+            "minLength": 1
+          },
+          "puertos": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Publicado:interno (8080:80)"
+          },
+          "volumenes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Carpeta del servidor:ruta del contenedor"
+          }
+        },
+        "required": ["nombre", "imagen"],
+        "additionalProperties": false
+      }
+    },
+    "fuente": {
+      "description": "De dónde sale el dato: manual, o la conexión de la que se importó (komodo)",
+      "type": "string",
+      "minLength": 1
+    },
+    "actualizado": {
+      "description": "Fecha del dato, AAAA-MM-DD",
+      "type": "string",
+      "format": "date",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+    }
+  },
+  "required": ["nombre", "servidor", "origen", "contenedores"],
+  "additionalProperties": false,
+  "title": "Stack",
+  "description": "Cada proyecto de Docker Compose de un servidor. El id es servidor y proyecto (docker-01-adguard)"
+}

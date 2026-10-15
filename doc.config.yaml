@@ -1,0 +1,23 @@
+# Configuración del sitio. Lo demás (menú, secciones, catálogo) sale de las
+# carpetas: docs/ son las fichas y catalogo/ los datos estructurados.
+
+nombre: Homelab
+descripcion: Documentación de los servidores, servicios y copias de casa
+plataforma: "1" # versión mayor del contrato con la plataforma
+
+# Campos extra de la cabecera de las fichas. Los comunes (titulo,
+# descripcion, icono, orden, actualizado) los pone la plataforma. Usan los
+# mismos tipos de campo que el catálogo (ver catalogo/*/_tipo.yaml).
+cabecera:
+  servicios:
+    tipo: lista
+    de: { tipo: ref, a: servicios }
+    descripcion: Servicios de los que habla la ficha
+  maquinas:
+    tipo: lista
+    de: { tipo: ref, a: maquinas }
+    descripcion: Máquinas de las que habla la ficha
+  pendientes:
+    tipo: lista
+    de: { tipo: texto }
+    descripcion: Preguntas abiertas, se juntan en una página de pendientes

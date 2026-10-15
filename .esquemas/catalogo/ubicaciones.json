@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "minLength": 1
+    },
+    "red": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Rango de la red local en CIDR (192.168.1.0/24)"
+    },
+    "proveedor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Empresa que la aloja, si no es casa"
+    },
+    "fuente": {
+      "description": "De dónde sale el dato: manual, o la conexión de la que se importó (komodo)",
+      "type": "string",
+      "minLength": 1
+    },
+    "actualizado": {
+      "description": "Fecha del dato, AAAA-MM-DD",
+      "type": "string",
+      "format": "date",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+    }
+  },
+  "required": ["nombre"],
+  "additionalProperties": false,
+  "title": "Ubicación",
+  "description": "Dónde está físicamente una máquina, en casa o en un proveedor"
+}

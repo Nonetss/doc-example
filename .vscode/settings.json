@@ -1,0 +1,22 @@
+{
+  "yaml.schemas": {
+    ".esquemas/doc.config.json": ["doc.config.yaml"],
+    ".esquemas/tipo.json": ["catalogo/*/_tipo.yaml"],
+    ".esquemas/catalogo/maquinas.json": [
+      "catalogo/maquinas/*.yaml",
+      "!catalogo/maquinas/_*.yaml"
+    ],
+    ".esquemas/catalogo/servicios.json": [
+      "catalogo/servicios/*.yaml",
+      "!catalogo/servicios/_*.yaml"
+    ],
+    ".esquemas/catalogo/stacks.json": [
+      "catalogo/stacks/*.yaml",
+      "!catalogo/stacks/_*.yaml"
+    ],
+    ".esquemas/catalogo/ubicaciones.json": [
+      "catalogo/ubicaciones/*.yaml",
+      "!catalogo/ubicaciones/_*.yaml"
+    ]
+  }
+}
