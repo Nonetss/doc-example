@@ -1,0 +1,5 @@
+family: reference
+value: "The path of a page under docs/, without .mdx; shown as a link titled with the page's title"
+example: "page: { tipo: ficha } → page: containers/komodo"
+fuente: manual
+actualizado: 2026-10-15

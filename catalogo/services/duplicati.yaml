@@ -1,7 +1,0 @@
-name: Duplicati
-category: backups
-status: partial
-summary: Encrypted backups of the stacks' volumes to the NAS
-url: https://duplicati.home.example
-machine: docker-01
-page: backups/duplicati

@@ -1,0 +1,27 @@
+nombre: File
+plural: Files
+icono: file-code
+descripcion: The files and folders a content repository may hold. The id is a short name for each
+etiqueta: path
+
+campos:
+  path:
+    tipo: texto
+    descripcion: Where it goes, from the repository root (menu.yaml, docs/**/*.mdx)
+  kind:
+    tipo: enum
+    valores: [declaration, content, agents]
+    descripcion: "declaration: read first, and a broken one keeps the last valid version; content: read with the pages; agents: for AI agents"
+  required:
+    tipo: booleano
+    descripcion: Whether every repository needs it
+  purpose:
+    tipo: texto
+    descripcion: One line on what it holds
+  page:
+    tipo: ficha
+    opcional: true
+    descripcion: The page that explains it
+
+vista:
+  columnas: [path, kind, required, purpose]

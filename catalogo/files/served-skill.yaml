@@ -1,0 +1,7 @@
+path: skills/<name>/SKILL.md
+kind: agents
+required: false
+purpose: A skill the platform serves to other agents so they know how to work with the site
+page: publishing/agents
+fuente: manual
+actualizado: 2026-10-15

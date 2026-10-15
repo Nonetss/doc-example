@@ -1,0 +1,6 @@
+family: composite
+value: "A group of named fields declared in campos; shown as name: value pairs"
+takes: "campos: { … }"
+example: "port: { tipo: objeto, campos: { number: { tipo: entero } } } → port: { number: 53 }"
+fuente: manual
+actualizado: 2026-10-15

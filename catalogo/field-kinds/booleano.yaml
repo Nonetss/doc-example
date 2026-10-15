@@ -1,0 +1,5 @@
+family: scalar
+value: "true or false; shown as Sí or No"
+example: "public: { tipo: booleano } → public: true"
+fuente: manual
+actualizado: 2026-10-15

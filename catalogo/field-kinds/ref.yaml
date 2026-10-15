@@ -1,0 +1,6 @@
+family: reference
+value: "The id of an existing entity of the type named in a; shown as its label, linked"
+takes: "a: <type>"
+example: "host: { tipo: ref, a: machines } → host: pve-01"
+fuente: manual
+actualizado: 2026-10-15

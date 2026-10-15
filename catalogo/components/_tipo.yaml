@@ -1,0 +1,29 @@
+nombre: Component
+plural: Components
+icono: component
+descripcion: The components a page may use, the only JSX the platform reads. Each one goes in a block of its own
+etiqueta: tag
+
+campos:
+  tag:
+    tipo: texto
+    descripcion: How it is written in a page
+  purpose:
+    tipo: texto
+    descripcion: What it shows
+  attributes:
+    tipo: lista
+    descripcion: The attributes it accepts, always as literal strings
+    de:
+      tipo: objeto
+      campos:
+        name: { tipo: texto }
+        required: { tipo: booleano }
+        meaning: { tipo: texto }
+  page:
+    tipo: ficha
+    opcional: true
+    descripcion: The page that explains it
+
+vista:
+  columnas: [tag, purpose]

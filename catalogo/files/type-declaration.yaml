@@ -1,0 +1,7 @@
+path: catalogo/<type>/_tipo.yaml
+kind: declaration
+required: false
+purpose: The declaration of a catalog type, its fields and its table
+page: catalog/types
+fuente: manual
+actualizado: 2026-10-15

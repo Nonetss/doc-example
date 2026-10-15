@@ -1,0 +1,9 @@
+tag: "<Diagram>"
+purpose: A diagram of diagramas/, shown where the component is
+attributes:
+  - name: id
+    required: true
+    meaning: The diagram, as the name of its file in diagramas/ without .yaml
+page: diagrams
+fuente: manual
+actualizado: 2026-10-15

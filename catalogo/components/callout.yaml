@@ -1,0 +1,12 @@
+tag: "<Callout>"
+purpose: A highlighted note around Markdown
+attributes:
+  - name: type
+    required: false
+    meaning: "note (the default), info, tip, important, warning, caution or danger"
+  - name: title
+    required: false
+    meaning: Its title; without it, the title of its type
+page: pages/components
+fuente: manual
+actualizado: 2026-10-15

@@ -1,0 +1,23 @@
+nombre: Field kind
+plural: Field kinds
+icono: shapes
+descripcion: The kinds a catalog field or a page header field can be. The id is the kind as written in `tipo`
+
+campos:
+  family:
+    tipo: enum
+    valores: [scalar, choice, reference, composite]
+    descripcion: "scalar: a single value; choice: one of a list; reference: points at something else; composite: holds other fields"
+  value:
+    tipo: texto
+    descripcion: What a value of this kind looks like
+  takes:
+    tipo: texto
+    opcional: true
+    descripcion: The extra key the declaration needs (valores, a, de, campos)
+  example:
+    tipo: texto
+    descripcion: A declaration and a value, as they are written
+
+vista:
+  columnas: [id, value, takes, example]

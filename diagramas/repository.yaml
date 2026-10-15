@@ -1,0 +1,20 @@
+titulo: What a content repository holds
+descripcion: The declarations say what the content may hold and how it is shown; the pages cite the entities and show the diagrams
+direccion: derecha
+nodos:
+  config: { entidad: files/doc-config }
+  menu: { entidad: files/menu }
+  types: { entidad: files/type-declaration }
+  pages: { entidad: files/page }
+  entities: { entidad: files/entity }
+  diagrams: { entidad: files/diagram-file }
+conexiones:
+  - config -> pages: declares their extra header fields
+  - menu -> pages: groups and orders them in the sidebar
+  - types -> entities: declare their fields
+  - pages -> entities: cite them with catalogo links and header fields
+  - pages -> diagrams: show them with the Diagram component
+  - diagrams -> entities: use them as nodes
+zonas:
+  declarations: { titulo: Declarations, nodos: [config, menu, types] }
+  content: { titulo: Content, nodos: [pages, entities, diagrams] }

@@ -1,0 +1,7 @@
+path: docs/**/*.mdx
+kind: content
+required: true
+purpose: The pages, in MDX without code; docs/index.mdx is the home and every folder is a section
+page: pages
+fuente: manual
+actualizado: 2026-10-15

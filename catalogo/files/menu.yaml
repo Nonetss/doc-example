@@ -1,0 +1,7 @@
+path: menu.yaml
+kind: declaration
+required: false
+purpose: The sidebar, as groups of pages, folders and catalog pages; it wins over page headers
+page: repository/menu
+fuente: manual
+actualizado: 2026-10-15

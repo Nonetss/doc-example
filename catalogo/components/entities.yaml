@@ -1,0 +1,15 @@
+tag: "<Entities>"
+purpose: The table of the valid entities of a catalog type
+attributes:
+  - name: type
+    required: true
+    meaning: The type, as the name of its folder in catalogo/
+  - name: columns
+    required: false
+    meaning: The fields to show, separated by commas (id too); without it, the type's vista.columnas
+  - name: group
+    required: false
+    meaning: A field that splits the table into one block per value
+page: pages/components
+fuente: manual
+actualizado: 2026-10-15

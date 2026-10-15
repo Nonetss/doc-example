@@ -1,6 +1,0 @@
-name: Pangolin
-category: network
-status: pending
-summary: Tunnelled reverse proxy that publishes the home services to the outside
-url: https://pangolin.example
-machine: vps-01

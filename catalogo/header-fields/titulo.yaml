@@ -1,0 +1,6 @@
+required: true
+kind: texto
+meaning: The page's title, in the sidebar, the page header, the cards and the search
+rule: menu.yaml can give the page another title, and then that one wins
+fuente: manual
+actualizado: 2026-10-15

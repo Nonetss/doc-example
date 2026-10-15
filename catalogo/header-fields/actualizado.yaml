@@ -1,0 +1,5 @@
+required: false
+kind: fecha
+meaning: The date of the page's data, not of its last edit; past six months the page is marked for review
+fuente: manual
+actualizado: 2026-10-15

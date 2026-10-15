@@ -1,7 +1,0 @@
-ip: 203.0.113.42
-location: hetzner
-kind: vps
-os: Debian 13
-purpose: "The way in from outside: Pangolin publishes the home services"
-fuente: manual
-actualizado: 2026-10-15

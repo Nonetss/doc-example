@@ -1,8 +1,0 @@
-ip: 192.168.1.30
-location: home
-kind: physical
-os: TrueNAS SCALE 25.10
-purpose: Storage, and the target of the Duplicati backups
-page: backups/duplicati
-fuente: manual
-actualizado: 2026-10-15

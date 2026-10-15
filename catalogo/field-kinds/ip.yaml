@@ -1,0 +1,5 @@
+family: scalar
+value: "An IPv4 or IPv6 address"
+example: "ip: { tipo: ip } → ip: 192.168.1.20"
+fuente: manual
+actualizado: 2026-10-15

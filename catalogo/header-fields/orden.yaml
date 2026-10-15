@@ -1,0 +1,6 @@
+required: false
+kind: numero
+meaning: The page's place in its folder; pages without one go last, then by title
+rule: Only orders a folder's pages; the top of the menu is ordered by menu.yaml
+fuente: manual
+actualizado: 2026-10-15

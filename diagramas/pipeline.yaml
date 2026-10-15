@@ -1,0 +1,19 @@
+titulo: From a push to the published site
+descripcion: A writer pushes the content repository, the platform syncs and validates it, and publishes it to the reader, the editor and AI agents
+direccion: derecha
+nodos:
+  writer: { nombre: Writer, sub: a person or an agent, tipo: entrada }
+  repo: { nombre: Content repository, sub: git, tipo: almacen }
+  platform: { nombre: Platform, sub: syncs and validates }
+  reader: { nombre: Reader, sub: "the web, for people" }
+  editor: { nombre: Editor, sub: YAML completion }
+  agents: { nombre: AI agents, sub: llms.txt and llm.txt }
+conexiones:
+  - writer -> repo: git push
+  - repo -> platform: sync on push, or every five minutes
+  - platform -> reader: pages, menu and catalog pages
+  - platform -> editor: the schema catalog
+  - platform -> agents: every page as Markdown
+zonas:
+  yours: { titulo: Your side, nodos: [writer, repo, editor] }
+  platform: { titulo: The platform, nodos: [platform, reader, agents] }

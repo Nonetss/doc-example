@@ -1,8 +1,0 @@
-name: PVE-01
-ip: 192.168.1.10
-location: home
-kind: physical
-os: Proxmox VE 9
-purpose: The home hypervisor, where every vm runs
-fuente: manual
-actualizado: 2026-10-15

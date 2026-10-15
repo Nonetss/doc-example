@@ -1,28 +1,28 @@
-# Site configuration. Everything else (menu, sections, catalog) comes from the
-# folders: docs/ holds the pages and catalogo/ the structured data.
+# Site configuration. The menu is in menu.yaml, the pages in docs/, the
+# structured data in catalogo/ and the diagrams in diagramas/.
 #
 # The keys of this file and of every _tipo.yaml (nombre, cabecera, campos,
 # tipo: texto...) are the platform's contract and are read as they are. The
 # values, the type ids and the field names are this site's own.
 
-nombre: Homelab
-descripcion: Documentation of the home servers, services and backups
+nombre: Writing documentation
+descripcion: How to write a content repository the doc platform publishes, from the first page to the menu, the catalog and the diagrams
 plataforma: "1" # major version of the platform contract this site targets
 
 # Extra header fields for the pages. The platform already gives every page
 # titulo, descripcion, icono, orden and actualizado. These use the same field
 # kinds as the catalog (see catalogo/*/_tipo.yaml).
 cabecera:
-  services:
+  files:
     tipo: lista
-    de: { tipo: ref, a: services }
+    de: { tipo: ref, a: files }
     opcional: true
-    descripcion: Services the page is about
-  machines:
+    descripcion: Files of a content repository the page explains
+  components:
     tipo: lista
-    de: { tipo: ref, a: machines }
+    de: { tipo: ref, a: components }
     opcional: true
-    descripcion: Machines the page is about
+    descripcion: Page components the page explains
   open_questions:
     tipo: lista
     de: { tipo: texto }

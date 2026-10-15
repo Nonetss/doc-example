@@ -1,0 +1,32 @@
+# The sidebar. Each group lists, in order, the pages and folders of docs/ it
+# shows (a folder brings all its pages) and the catalog pages (catalogo, or
+# catalogo/<type>). Whatever no group shows ends up in a last "Otros" group.
+# The titles and icons written here win over the ones in the page headers.
+
+secciones:
+  - titulo: Start
+    icono: rocket
+    descripcion: What a content repository is and how to get one published
+    paginas:
+      - { ruta: getting-started, icono: compass }
+      - { ruta: repository, icono: folder-tree }
+
+  - titulo: Writing
+    icono: pen-line
+    descripcion: Pages, their header, Markdown and the components
+    paginas:
+      - { ruta: pages, icono: file-text }
+      - { ruta: diagrams, icono: workflow }
+
+  - titulo: Data
+    icono: database
+    descripcion: The catalog, from declaring a type to browsing it in the reader
+    paginas:
+      - { ruta: catalog, icono: table }
+      - { ruta: catalogo, titulo: Reference }
+
+  - titulo: Publishing
+    icono: send
+    descripcion: How a push becomes the published site, and how agents read it
+    paginas:
+      - { ruta: publishing, icono: git-branch }
