@@ -1,7 +1,7 @@
-path: diagramas/<id>.yaml
+path: diagramas/<id>.json
 kind: content
 required: false
-purpose: Un diagrama, declarado como nodos, conexiones y zonas y mostrado con <Diagram>
+purpose: Un diagrama en JSON, con sus cajas, flechas y zonas colocadas a mano, mostrado con <Diagram>
 page: diagrams
 fuente: manual
 actualizado: 2026-10-15
