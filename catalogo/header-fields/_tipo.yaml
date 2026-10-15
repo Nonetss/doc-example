@@ -1,23 +1,23 @@
-nombre: Header field
-plural: Header fields
+nombre: Campo de cabecera
+plural: Campos de cabecera
 icono: heading
-descripcion: The fields every page header accepts without declaring them. The id is the field as written
+descripcion: Los campos que toda cabecera de página acepta sin declararlos. El id es el campo tal como se escribe
 
 campos:
   required:
     tipo: booleano
-    descripcion: Whether a page without it is reported
+    descripcion: Si se reporta una página que no lo tiene
   kind:
     tipo: ref
     a: field-kinds
-    descripcion: The kind of its value
+    descripcion: El tipo de su valor
   meaning:
     tipo: texto
-    descripcion: What it is for, and where it shows
+    descripcion: Para qué sirve y dónde se muestra
   rule:
     tipo: texto
     opcional: true
-    descripcion: The rule its value follows, when the kind says too little
+    descripcion: La regla que sigue su valor, cuando el tipo dice demasiado poco
 
 vista:
   columnas: [id, required, kind, meaning]

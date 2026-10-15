@@ -1,32 +1,33 @@
-# The sidebar. Each group lists, in order, the pages and folders of docs/ it
-# shows (a folder brings all its pages) and the catalog pages (catalogo, or
-# catalogo/<type>). Whatever no group shows ends up in a last "Otros" group.
-# The titles and icons written here win over the ones in the page headers.
+# La barra lateral. Cada grupo lista, en orden, las páginas y carpetas de docs/
+# que muestra (una carpeta trae todas sus páginas) y las páginas del catálogo
+# (catalogo, o catalogo/<tipo>). Lo que ningún grupo muestra acaba en un último
+# grupo "Otros". Los títulos e iconos escritos aquí mandan sobre los de las
+# cabeceras de las páginas.
 
 secciones:
-  - titulo: Start
+  - titulo: Inicio
     icono: rocket
-    descripcion: What a content repository is and how to get one published
+    descripcion: Qué es un repositorio de contenido y cómo publicar uno
     paginas:
       - { ruta: getting-started, icono: compass }
       - { ruta: repository, icono: folder-tree }
 
-  - titulo: Writing
+  - titulo: Escritura
     icono: pen-line
-    descripcion: Pages, their header, Markdown and the components
+    descripcion: Las páginas, su cabecera, el Markdown y los componentes
     paginas:
       - { ruta: pages, icono: file-text }
       - { ruta: diagrams, icono: workflow }
 
-  - titulo: Data
+  - titulo: Datos
     icono: database
-    descripcion: The catalog, from declaring a type to browsing it in the reader
+    descripcion: El catálogo, desde declarar un tipo hasta explorarlo en el lector
     paginas:
       - { ruta: catalog, icono: table }
-      - { ruta: catalogo, titulo: Reference }
+      - { ruta: catalogo, titulo: Referencia }
 
-  - titulo: Publishing
+  - titulo: Publicación
     icono: send
-    descripcion: How a push becomes the published site, and how agents read it
+    descripcion: Cómo un push se convierte en el sitio publicado y cómo lo leen los agentes
     paginas:
       - { ruta: publishing, icono: git-branch }

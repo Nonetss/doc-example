@@ -1,30 +1,30 @@
-# Site configuration. The menu is in menu.yaml, the pages in docs/, the
-# structured data in catalogo/ and the diagrams in diagramas/.
+# Configuración del sitio. El menú está en menu.yaml, las páginas en docs/,
+# los datos estructurados en catalogo/ y los diagramas en diagramas/.
 #
-# The keys of this file and of every _tipo.yaml (nombre, cabecera, campos,
-# tipo: texto...) are the platform's contract and are read as they are. The
-# values, the type ids and the field names are this site's own.
+# Las claves de este fichero y de cada _tipo.yaml (nombre, cabecera, campos,
+# tipo: texto...) son el contrato de la plataforma y se leen tal cual. Los
+# valores, los ids de tipo y los nombres de campo son propios de este sitio.
 
-nombre: Writing documentation
-descripcion: How to write a content repository the doc platform publishes, from the first page to the menu, the catalog and the diagrams
-plataforma: "1" # major version of the platform contract this site targets
+nombre: Escribir documentación
+descripcion: Cómo escribir un repositorio de contenido que publique la plataforma doc, desde la primera página hasta el menú, el catálogo y los diagramas
+plataforma: "1" # versión mayor del contrato de la plataforma a la que apunta este sitio
 
-# Extra header fields for the pages. The platform already gives every page
-# titulo, descripcion, icono, orden and actualizado. These use the same field
-# kinds as the catalog (see catalogo/*/_tipo.yaml).
+# Campos extra de cabecera para las páginas. La plataforma ya da a cada página
+# titulo, descripcion, icono, orden y actualizado. Estos usan los mismos tipos
+# de campo que el catálogo (ver catalogo/*/_tipo.yaml).
 cabecera:
   files:
     tipo: lista
     de: { tipo: ref, a: files }
     opcional: true
-    descripcion: Files of a content repository the page explains
+    descripcion: Ficheros de un repositorio de contenido que explica la página
   components:
     tipo: lista
     de: { tipo: ref, a: components }
     opcional: true
-    descripcion: Page components the page explains
+    descripcion: Componentes de página que explica la página
   open_questions:
     tipo: lista
     de: { tipo: texto }
     opcional: true
-    descripcion: Questions still open; a question round answers them (/questions)
+    descripcion: Preguntas aún abiertas; una ronda de preguntas las responde (/questions)

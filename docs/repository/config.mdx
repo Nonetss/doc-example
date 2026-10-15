@@ -1,25 +1,25 @@
 ---
-titulo: Site configuration
-descripcion: doc.config.yaml gives the site its name, the contract version it follows and the extra fields of its page headers
+titulo: Configuración del sitio
+descripcion: doc.config.yaml da al sitio su nombre, la versión del contrato que sigue y los campos extra de las cabeceras de sus páginas
 files: [doc-config]
 orden: 1
 actualizado: 2026-10-15
 ---
 
-## The keys
+## Las claves
 
-| Key | What it is |
+| Clave | Qué es |
 | --- | --- |
-| `nombre` | Required. The site's name, as the reader shows it. |
-| `descripcion` | Optional. One sentence on what the documentation is about. |
-| `plataforma` | Required. The major version of the contract, between quotes: `"1"`. |
-| `cabecera` | Optional. The extra fields the page headers of this site accept. |
+| `nombre` | Obligatoria. El nombre del sitio, tal como lo muestra el lector. |
+| `descripcion` | Opcional. Una frase sobre de qué trata la documentación. |
+| `plataforma` | Obligatoria. La versión mayor del contrato, entre comillas: `"1"`. |
+| `cabecera` | Opcional. Los campos extra que aceptan las cabeceras de página de este sitio. |
 
-Any other key is reported. `doc.config.yaml` is a declaration: while it is broken, the platform keeps the last valid version.
+Cualquier otra clave se reporta. `doc.config.yaml` es una declaración: mientras está rota, la plataforma mantiene la última versión válida.
 
-## Extra header fields
+## Campos extra de la cabecera
 
-Every page header already has `titulo`, `descripcion`, `icono`, `orden` and `actualizado` (see [The header](../pages/header.mdx)). `cabecera` adds the site's own, each declared with a [field kind](catalogo:field-kinds), exactly like a catalog field:
+Toda cabecera de página ya tiene `titulo`, `descripcion`, `icono`, `orden` y `actualizado` (consulta [La cabecera](../pages/header.mdx)). `cabecera` añade los propios del sitio, cada uno declarado con un [tipo de campo](catalogo:field-kinds), igual que un campo del catálogo:
 
 ```yaml
 cabecera:
@@ -27,11 +27,11 @@ cabecera:
     tipo: lista
     de: { tipo: ref, a: machines }
     opcional: true
-    descripcion: Machines the page is about
+    descripcion: Máquinas de las que trata la página
 ```
 
-A page can then say `machines: [nas, pve-01]`. Each id is checked against the catalog, the page header shows them as links to their entities, and each entity's page lists the page under "Páginas que la citan".
+Una página puede entonces decir `machines: [nas, pve-01]`. Cada id se comprueba contra el catálogo, la cabecera de la página los muestra como enlaces a sus entidades, y la página de cada entidad lista la página en "Páginas que la citan".
 
-- `cabecera` cannot redeclare the common fields.
-- A page using a field that is not declared here is reported: declare it first.
-- This site declares `files`, `components` and `open_questions`; look at its `doc.config.yaml`.
+- `cabecera` no puede redeclarar los campos comunes.
+- Una página que use un campo no declarado aquí se reporta: decláralo primero.
+- Este sitio declara `files`, `components` y `open_questions`; consulta su `doc.config.yaml`.

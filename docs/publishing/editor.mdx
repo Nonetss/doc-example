@@ -1,14 +1,14 @@
 ---
-titulo: The editor
-descripcion: One editor setting gives every YAML file of the repository completion and validation from the platform
+titulo: El editor
+descripcion: Un ajuste del editor da a todos los ficheros YAML del repositorio autocompletado y validación desde la plataforma
 files: [doc-config, menu, type-declaration, entity, diagram-file]
 orden: 1
 actualizado: 2026-10-15
 ---
 
-## The setting
+## El ajuste
 
-The platform serves, without signing in, a **schema catalog** per repository. With the Red Hat YAML extension (`redhat.vscode-yaml`, in VS Code and Cursor), one setting is enough:
+La plataforma sirve, sin iniciar sesión, un **catálogo de esquemas** por repositorio. Con la extensión YAML de Red Hat (`redhat.vscode-yaml`, en VS Code y Cursor), basta un ajuste:
 
 ```json
 {
@@ -16,25 +16,25 @@ The platform serves, without signing in, a **schema catalog** per repository. Wi
 }
 ```
 
-Copy the exact URL from the repository's card in `/admin/content`.
+Copia la URL exacta de la tarjeta del repositorio en `/admin/content`.
 
-- **The content repository on its own:** in its `.vscode/settings.json`, committed, so whoever clones it gets completion.
-- **A workspace with several folders:** in the workspace's settings; the extension ignores this one in a folder's `.vscode/`.
+- **El repositorio de contenido por sí solo:** en su `.vscode/settings.json`, con commit, para que quien lo clone tenga autocompletado.
+- **Un espacio de trabajo con varias carpetas:** en los ajustes del espacio de trabajo; la extensión ignora este ajuste en el `.vscode/` de una carpeta.
 
-## What it completes
+## Qué autocompleta
 
-| File | What the editor knows |
+| Fichero | Qué sabe el editor |
 | --- | --- |
-| `doc.config.yaml` | Every key, and the field kinds of `cabecera` |
-| `menu.yaml` | Every key, the paths an entry can name (pages, folders, `catalogo` and every type) and the icon names |
-| `diagramas/*.yaml` | Every key, the entities a node can be and the icon names |
-| `_tipo.yaml` | Every key, the field kinds, the types a `ref` can point at and the icon names |
-| An entity | Its type's fields with their descriptions, the values of each `enum`, the ids each `ref` accepts and the pages a `ficha` can name |
+| `doc.config.yaml` | Cada clave y los tipos de campo de `cabecera` |
+| `menu.yaml` | Cada clave, las rutas que puede nombrar una entrada (páginas, carpetas, `catalogo` y cada tipo) y los nombres de icono |
+| `diagramas/*.yaml` | Cada clave, las entidades que puede ser un nodo y los nombres de icono |
+| `_tipo.yaml` | Cada clave, los tipos de campo, los tipos a los que puede apuntar un `ref` y los nombres de icono |
+| Una entidad | Los campos de su tipo con sus descripciones, los valores de cada `enum`, los ids que acepta cada `ref` y las páginas que puede nombrar una `ficha` |
 
-Nothing is generated or committed: a new type, entity or page shows up in the suggestions after the sync that brings it. If it doesn't, reopen the file or reload the window.
+No se genera ni se hace commit de nada: un tipo, una entidad o una página nuevos aparecen en las sugerencias tras la sincronización que los trae. Si no aparecen, vuelve a abrir el fichero o recarga la ventana.
 
-## Good to know
+## Conviene saber
 
-- The setting replaces SchemaStore's public catalog in that window, so files like `compose.yml` lose their completion while it is set.
-- The catalog exposes names, descriptions, ids and page paths; never the text of the pages, the values of the entities or the repository's URL.
-- In development, the editor does not trust the local certificate: point it at production, or set `"http.proxyStrictSSL": false` in your user settings while you develop.
+- El ajuste sustituye el catálogo público de SchemaStore en esa ventana, así que ficheros como `compose.yml` pierden su autocompletado mientras esté activo.
+- El catálogo expone nombres, descripciones, ids y rutas de página; nunca el texto de las páginas, los valores de las entidades ni la URL del repositorio.
+- En desarrollo, el editor no confía en el certificado local: apúntalo a producción, o define `"http.proxyStrictSSL": false` en tus ajustes de usuario mientras desarrollas.

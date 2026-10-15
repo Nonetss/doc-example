@@ -1,38 +1,38 @@
 ---
-titulo: Pages
-descripcion: A page is an MDX file under docs/; its path is its URL, and it is read without running anything
+titulo: Páginas
+descripcion: Una página es un fichero MDX bajo docs/; su ruta es su URL, y se lee sin ejecutar nada
 files: [page]
 actualizado: 2026-10-15
 ---
 
-## Files and paths
+## Ficheros y rutas
 
-Every `docs/**/*.mdx` file is a page. Its path is its file path without `.mdx`, and it is published at the repository's slug followed by that path:
+Todo fichero `docs/**/*.mdx` es una página. Su ruta es la ruta del fichero sin `.mdx`, y se publica en el slug del repositorio seguido de esa ruta:
 
-| File | Path |
+| Fichero | Ruta |
 | --- | --- |
-| `docs/index.mdx` | The repository's home |
+| `docs/index.mdx` | La página de inicio del repositorio |
 | `docs/getting-started.mdx` | `getting-started` |
-| `docs/network/index.mdx` | `network`: the folder's entry page |
+| `docs/network/index.mdx` | `network`: la página de entrada de la carpeta |
 | `docs/network/dns.mdx` | `network/dns` |
 
-Every folder is a section, titled by its `index.mdx`, or by the folder's name when it has none. A section's page lists its pages and subsections as cards after its body.
+Toda carpeta es una sección, titulada por su `index.mdx`, o por el nombre de la carpeta cuando no lo tiene. La página de una sección lista sus páginas y subsecciones como tarjetas tras su cuerpo.
 
-## Nothing runs
+## No se ejecuta nada
 
-A page is Markdown plus the platform's [components](components.mdx). The platform turns it into a tree without running anything, so `import`, `export` and expressions between braces are reported and left out. What it cannot read it reports as a problem and renders the rest: a broken page never takes the others down.
+Una página es Markdown más los [componentes](components.mdx) de la plataforma. La plataforma la convierte en un árbol sin ejecutar nada, así que `import`, `export` y las expresiones entre llaves se reportan y se omiten. Lo que no puede leer lo reporta como un problema y renderiza el resto: una página rota nunca tumba a las demás.
 
-## Where do I find…?
+## ¿Dónde encuentro…?
 
-| I want to… | Page |
+| Quiero… | Página |
 | --- | --- |
-| Know which header fields a page has | [The header](header.mdx) |
-| Write the body: Markdown, alerts, links, images | [Markdown](markdown.mdx) |
-| Show a table of the catalog, a note or a diagram | [Components](components.mdx) |
+| Saber qué campos de cabecera tiene una página | [La cabecera](header.mdx) |
+| Escribir el cuerpo: Markdown, alertas, enlaces, imágenes | [Markdown](markdown.mdx) |
+| Mostrar una tabla del catálogo, una nota o un diagrama | [Componentes](components.mdx) |
 
-## Good habits
+## Buenos hábitos
 
-- One idea per paragraph, straight to the point: someone reads it who was not there.
-- A procedure is a page of its own with numbered steps, so a person and an agent can follow it the same way.
-- Repeated facts with the same shape go to the [catalog](../catalog/index.mdx), and the page cites them instead of copying them.
-- Never write a secret: write where it lives and which account to use.
+- Una idea por párrafo, directo al grano: lo lee alguien que no estaba allí.
+- Un procedimiento es una página propia con pasos numerados, para que una persona y un agente puedan seguirlo del mismo modo.
+- Los hechos repetidos con la misma forma van al [catálogo](../catalog/index.mdx), y la página los cita en lugar de copiarlos.
+- Nunca escribas un secreto: escribe dónde vive y qué cuenta usar.

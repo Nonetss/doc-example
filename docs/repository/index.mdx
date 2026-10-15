@@ -1,58 +1,58 @@
 ---
-titulo: The repository
-descripcion: Every file and folder a content repository may hold, and which names belong to the platform
+titulo: El repositorio
+descripcion: Cada fichero y carpeta que puede contener un repositorio de contenido, y qué nombres pertenecen a la plataforma
 files: [doc-config, menu, page, type-declaration, entity, diagram-file, served-skill]
 actualizado: 2026-10-15
 ---
 
-## The files
+## Los ficheros
 
 <Entities type="files" group="kind" columns="path,required,purpose" />
 
-- **Declarations** are read first: they say what the rest may hold. When one is broken, the platform keeps serving the last valid version of all of them, so a typo never takes the site down.
-- **Content** is read with the pages. A broken page, entity or diagram is reported and the rest is published anyway.
+- Las **declaraciones** se leen primero: dicen qué puede contener el resto. Cuando una está rota, la plataforma sigue sirviendo la última versión válida de todas ellas, de modo que un error tipográfico nunca tumba el sitio.
+- El **contenido** se lee junto con las páginas. Una página, entidad o diagrama rotos se reportan y el resto se publica igualmente.
 
 ```
-doc.config.yaml          # the site
-menu.yaml                # the sidebar (optional)
+doc.config.yaml          # el sitio
+menu.yaml                # la barra lateral (opcional)
 docs/
-├── index.mdx            # the home
-├── getting-started.mdx  # a page
-└── network/             # a section
-    ├── index.mdx        # its entry page
-    └── dns.mdx          # one of its pages
+├── index.mdx            # la página de inicio
+├── getting-started.mdx  # una página
+└── network/             # una sección
+    ├── index.mdx        # su página de entrada
+    └── dns.mdx          # una de sus páginas
 catalogo/
-└── machines/            # a type: the folder name is its id
-    ├── _tipo.yaml       # its declaration
-    └── nas.yaml         # an entity: the file name is its id
+└── machines/            # un tipo: el nombre de la carpeta es su id
+    ├── _tipo.yaml       # su declaración
+    └── nas.yaml         # una entidad: el nombre del fichero es su id
 diagramas/
-└── network.yaml         # a diagram: the file name is its id
+└── network.yaml         # un diagrama: el nombre del fichero es su id
 skills/
-└── homelab/SKILL.md     # a skill served to other agents
+└── homelab/SKILL.md     # una skill servida a otros agentes
 ```
 
 <Diagram id="repository" />
 
-## Contract names and your names
+## Nombres del contrato y nombres tuyos
 
-The platform reads a fixed set of names, and they are Spanish. They must be written exactly as they are, or the content stops validating:
+La plataforma lee un conjunto fijo de nombres, y están en español. Deben escribirse exactamente así, o el contenido deja de validar:
 
-| Where | Contract names |
+| Dónde | Nombres del contrato |
 | --- | --- |
-| Files and folders | `doc.config.yaml`, `menu.yaml`, `docs/`, `index.mdx`, `catalogo/`, `_tipo.yaml`, `diagramas/`, `skills/` |
+| Ficheros y carpetas | `doc.config.yaml`, `menu.yaml`, `docs/`, `index.mdx`, `catalogo/`, `_tipo.yaml`, `diagramas/`, `skills/` |
 | `doc.config.yaml` | `nombre`, `descripcion`, `plataforma`, `cabecera` |
 | `menu.yaml` | `secciones`, `titulo`, `icono`, `descripcion`, `paginas`, `ruta` |
 | `_tipo.yaml` | `nombre`, `plural`, `icono`, `descripcion`, `etiqueta`, `campos`, `vista`, `columnas` |
-| A field | `tipo`, `opcional`, `descripcion`, `valores`, `a`, `de`, `campos` |
-| Every page header | `titulo`, `descripcion`, `icono`, `orden`, `actualizado` |
-| Every entity | `fuente`, `actualizado` |
-| A diagram | `titulo`, `descripcion`, `direccion`, `nodos`, `entidad`, `nombre`, `sub`, `tipo`, `conexiones`, `zonas` |
-| Links | `catalogo:` followed by a type, or by a type and an id |
+| Un campo | `tipo`, `opcional`, `descripcion`, `valores`, `a`, `de`, `campos` |
+| Cada cabecera de página | `titulo`, `descripcion`, `icono`, `orden`, `actualizado` |
+| Cada entidad | `fuente`, `actualizado` |
+| Un diagrama | `titulo`, `descripcion`, `direccion`, `nodos`, `entidad`, `nombre`, `sub`, `tipo`, `conexiones`, `zonas` |
+| Enlaces | `catalogo:` seguido de un tipo, o de un tipo y un id |
 
-Everything else is yours, in whatever language you write: type ids, field names, enum values, the header fields you declare, folders, file names and every word of the pages. The platform knows nothing about your domain: a homelab declares machines and services, a shop would declare products and suppliers.
+Todo lo demás es tuyo, en el idioma que escribas: ids de tipo, nombres de campo, valores de enum, los campos de cabecera que declares, carpetas, nombres de fichero y cada palabra de las páginas. La plataforma no sabe nada de tu dominio: un homelab declara máquinas y servicios, una tienda declararía productos y proveedores.
 
-## Names and paths
+## Nombres y rutas
 
-- Files and folders are lowercase, with digits and hyphens: `new-stack.mdx`, `docker-01.yaml`. They become URLs and ids.
-- Field names are lowercase, with digits and underscores, and start with a letter: `public_ip`.
-- `docs/catalogo/` is reserved: the platform makes the catalog's pages there, so a page under it is reported and not published.
+- Los ficheros y carpetas van en minúsculas, con dígitos y guiones: `new-stack.mdx`, `docker-01.yaml`. Se convierten en URL e ids.
+- Los nombres de campo van en minúsculas, con dígitos y guiones bajos, y empiezan por una letra: `public_ip`.
+- `docs/catalogo/` está reservada: la plataforma genera ahí las páginas del catálogo, así que una página bajo esa ruta se reporta y no se publica.

@@ -1,35 +1,35 @@
 ---
-titulo: In the reader
-descripcion: The pages the platform makes for the catalog, a table per type and a page per entity, without writing them
+titulo: En el lector
+descripcion: Las páginas que la plataforma genera para el catálogo, una tabla por tipo y una página por entidad, sin escribirlas
 files: [entity, type-declaration]
 orden: 3
 actualizado: 2026-10-15
 ---
 
-## The pages it makes
+## Las páginas que genera
 
-No MDX is written for them: the platform builds them from the catalog every time it reads the site.
+No hay que escribir MDX para ellas: la plataforma las construye a partir del catálogo cada vez que lee el sitio.
 
-| Path | What it shows |
+| Ruta | Qué muestra |
 | --- | --- |
-| `catalogo` | Every type, with how many entities it has and how many have a page |
-| `catalogo/<type>` | The type's table, with its `vista.columnas`, sortable and searchable |
-| `catalogo/<type>/<id>` | One entity: its fields, its page, the pages that cite it, the entities that point at it and the diagrams it is in |
+| `catalogo` | Todos los tipos, con cuántas entidades tiene cada uno y cuántas tienen página |
+| `catalogo/<type>` | La tabla del tipo, con sus `vista.columnas`, ordenable y con búsqueda |
+| `catalogo/<type>/<id>` | Una entidad: sus campos, su página, las páginas que la citan, las entidades que apuntan a ella y los diagramas en los que aparece |
 
-This site's are under "Reference" in the sidebar. Open [Files](catalogo:files) and then [menu.yaml](catalogo:files/menu): the entity's page lists the pages of this guide that cite it, and the diagram it is a node of.
+Las de este sitio están bajo "Referencia" en la barra lateral. Abre [Ficheros](catalogo:files) y después [menu.yaml](catalogo:files/menu): la página de la entidad lista las páginas de esta guía que la citan y el diagrama del que es un nodo.
 
-## An entity's page
+## La página de una entidad
 
-- **Its fields,** each shown by its kind: references and pages as links, lists joined, booleans as "Sí" or "No". Then `fuente`, when it has one.
-- **Página:** the page its first `ficha` field names, when it has one.
-- **Páginas que la citan:** every page whose header names it in a `ref` field, or whose text links to it.
-- **Referencias:** for each type with a `ref` field naming it, the table of those entities. A machine's page shows the stacks that run on it and the VMs it hosts.
-- **Diagramas:** every diagram that has it as a node.
+- **Sus campos,** cada uno mostrado según su tipo: referencias y páginas como enlaces, listas unidas, booleanos como "Sí" o "No". Después `fuente`, cuando la tiene.
+- **Página:** la página que nombra su primer campo `ficha`, cuando lo tiene.
+- **Páginas que la citan:** toda página cuya cabecera la nombra en un campo `ref`, o cuyo texto enlaza a ella.
+- **Referencias:** por cada tipo con un campo `ref` que la nombra, la tabla de esas entidades. La página de una máquina muestra los stacks que se ejecutan en ella y las VM que aloja.
+- **Diagramas:** todo diagrama que la tiene como nodo.
 
-## Getting there
+## Cómo llegar
 
-- `catalogo:` links: to the entity's page when it has one, otherwise to its catalog page.
-- The label of every `Entities` table row, and every reference cell.
-- The menu: `catalogo` shows the catalog with every type, `catalogo/machines` one type. Without `menu.yaml`, the catalog is the sidebar's last section.
+- Los enlaces `catalogo:`: a la página de la entidad cuando la tiene, y si no, a su página de catálogo.
+- La etiqueta de cada fila de una tabla `Entities`, y cada celda de referencia.
+- El menú: `catalogo` muestra el catálogo con todos los tipos, `catalogo/machines` un tipo. Sin `menu.yaml`, el catálogo es la última sección de la barra lateral.
 
-Entity pages are not listed in the sidebar; type pages are, and the search finds them. Every one has its Markdown for agents like any page.
+Las páginas de entidad no aparecen en la barra lateral; las de tipo sí, y el buscador las encuentra. Cada una tiene su Markdown para agentes, como cualquier página.

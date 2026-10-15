@@ -1,7 +1,7 @@
 path: diagramas/<id>.yaml
 kind: content
 required: false
-purpose: One diagram, declared as nodes, connections and zones and shown with <Diagram>
+purpose: Un diagrama, declarado como nodos, conexiones y zonas y mostrado con <Diagram>
 page: diagrams
 fuente: manual
 actualizado: 2026-10-15

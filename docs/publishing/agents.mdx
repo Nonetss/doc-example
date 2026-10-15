@@ -1,29 +1,29 @@
 ---
-titulo: Agents
-descripcion: How an AI agent reads the published documentation, and the skills a site serves to agents
+titulo: Agentes
+descripcion: Cómo un agente de IA lee la documentación publicada, y las skills que un sitio sirve a los agentes
 files: [served-skill]
 orden: 2
 actualizado: 2026-10-15
 ---
 
-## The Markdown of every page
+## El Markdown de cada página
 
-Every page, catalog pages included, has its text as Markdown at its address followed by `/llm.txt`: the same text "Copiar en Markdown" copies, with every link as a full address. Two indexes, following llmstxt.org, list them:
+Cada página, incluidas las del catálogo, tiene su texto en Markdown en su dirección seguida de `/llm.txt`: el mismo texto que copia "Copiar en Markdown", con cada enlace como dirección completa. Dos índices, siguiendo llmstxt.org, las listan:
 
-| Address | What it is |
+| Dirección | Qué es |
 | --- | --- |
-| `/llms.txt` | Every repository, each page linked to its `llm.txt` with its description |
-| The repository's slug followed by `/llms.txt` | The same, for one repository |
+| `/llms.txt` | Todos los repositorios, con cada página enlazada a su `llm.txt` y con su descripción |
+| El slug del repositorio seguido de `/llms.txt` | Lo mismo, para un solo repositorio |
 
-Pages are labelled with their group and sections ("Writing / Pages / The header"). They need the same credentials as the reader: a session, or an API key in the `x-api-key` header. Every user creates their keys on `/me`, where they get the instructions ready to paste into their AI.
+Las páginas se etiquetan con su grupo y sus secciones ("Escritura / Páginas / La cabecera"). Requieren las mismas credenciales que el lector: una sesión, o una clave de API en la cabecera `x-api-key`. Cada usuario crea sus claves en `/me`, donde obtiene las instrucciones listas para pegar en su IA.
 
-## Served skills
+## Skills servidas
 
-`skills/<name>/SKILL.md` are skills the platform serves to other agents, so they know how to work with this site from any project. They follow the Agent Skills format: front matter with `name` and `description`, instructions below.
+`skills/<name>/SKILL.md` son skills que la plataforma sirve a otros agentes, para que sepan cómo trabajar con este sitio desde cualquier proyecto. Siguen el formato Agent Skills: front matter con `name` y `description`, y las instrucciones debajo.
 
-- **Thin:** they say how to work and where to look, never what there is. A downloaded skill is a snapshot that goes stale; the documentation is read live.
-- **They point at pages** instead of copying procedures.
-- **Site-specific only:** what every site shares, the platform explains itself.
-- **No secret,** and no asking a person for one.
+- **Delgadas:** dicen cómo trabajar y dónde mirar, nunca qué hay. Una skill descargada es una instantánea que se queda obsoleta; la documentación se lee en vivo.
+- **Apuntan a páginas** en lugar de copiar procedimientos.
+- **Solo lo específico del sitio:** lo que comparten todos los sitios, lo explica la propia plataforma.
+- **Ningún secreto,** y tampoco pedírselo a una persona.
 
-This site serves `doc-writing`: look at `skills/doc-writing/SKILL.md`.
+Este sitio sirve `doc-writing`: consulta `skills/doc-writing/SKILL.md`.

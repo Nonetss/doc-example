@@ -1,124 +1,131 @@
 # AGENTS.md
 
-A **documentation content repository** for the `doc` platform: the "Writing
-documentation" guide, which explains how to write a content repository and
-uses every feature it explains. It is also the example to copy when starting
-your own. It holds only content: pages (MDX), the menu, structured data and
-diagrams (YAML) and the skills the platform serves to other agents. The platform,
-a separate repository, clones it, validates it and publishes it. Nothing here
-is built or run.
+Un **repositorio de contenido de documentación** para la plataforma `doc`: la
+guía «Escribir documentación», que explica cómo escribir un repositorio de
+contenido y usa cada función que explica. También es el ejemplo que hay que
+copiar al empezar el tuyo. Solo contiene contenido: páginas (MDX), el menú,
+datos estructurados y diagramas (YAML) y las skills que la plataforma sirve a
+otros agentes. La plataforma, que es otro repositorio, lo clona, lo valida y lo
+publica. Aquí no se compila ni se ejecuta nada.
 
-## About this document
+## Sobre este documento
 
-- Agent instructions are this `AGENTS.md` plus the `documentation` skill
-  (`.agents/skills/documentation/`). `CLAUDE.md` only imports this file
-  (`@AGENTS.md`) so every agent reads the same text: never add instructions to
-  `CLAUDE.md`.
-- This file holds only what applies to **every** task: what this repository
-  is, the map, the hard rules and the pointer to the skill. Convention detail
-  lives in the skill's references.
-- Skills live in `.agents/skills/<name>/`; `.claude/skills/<name>` is a symlink
-  to them (`../../.agents/skills/<name>`). A new skill goes in `.agents/skills/`
-  and gets the same symlink.
-- New convention detail goes into a reference under
-  `.agents/skills/documentation/references/` plus a row in the skill's routing
-  table, not into a new skill.
-- A change to a convention updates the file that states it, in the same commit.
+- Las instrucciones para agentes son este `AGENTS.md` más la skill
+  `documentation` (`.agents/skills/documentation/`). `CLAUDE.md` solo importa
+  este fichero (`@AGENTS.md`) para que todos los agentes lean el mismo texto:
+  nunca añadas instrucciones a `CLAUDE.md`.
+- Este fichero contiene solo lo que se aplica a **toda** tarea: qué es este
+  repositorio, el mapa, las reglas estrictas y el puntero a la skill. El detalle
+  de las convenciones vive en las referencias de la skill.
+- Las skills viven en `.agents/skills/<name>/`; `.claude/skills/<name>` es un
+  enlace simbólico a ellas (`../../.agents/skills/<name>`). Una skill nueva va
+  en `.agents/skills/` y recibe el mismo enlace simbólico.
+- El detalle de una convención nueva va en una referencia bajo
+  `.agents/skills/documentation/references/` más una fila en la tabla de rutas
+  de la skill, no en una skill nueva.
+- Un cambio en una convención actualiza el fichero que la enuncia, en el mismo
+  commit.
 
-## Map
+## Mapa
 
-| Path | What it holds |
+| Ruta | Qué contiene |
 | --- | --- |
-| `doc.config.yaml` | The site: name, platform contract version, extra page header fields |
-| `menu.yaml` | The sidebar's groups; what it says about an entry wins over page headers |
-| `docs/` | The guide's pages (`.mdx`). Every folder is a section with its `index.mdx` |
-| `catalogo/<type>/_tipo.yaml` | The declaration of a data type (this site's describe the contract itself) |
-| `catalogo/<type>/<id>.yaml` | One entity: the file name is its id |
-| `diagramas/<id>.yaml` | One diagram, shown in pages with `<Diagram id="…" />` |
-| `skills/<name>/SKILL.md` | Skills the platform **serves to other agents** to work with this site |
-| `.agents/skills/documentation/` | The skill for **you**, the agent writing here |
-| `.claude/commands/questions.md` | `/questions`: question rounds to finish documenting a section |
-| `.vscode/settings.json` | The platform's schema catalog, for completion in the editor |
+| `doc.config.yaml` | El sitio: nombre, versión del contrato de la plataforma, campos extra de cabecera de las páginas |
+| `menu.yaml` | Los grupos de la barra lateral; lo que dice sobre una entrada prevalece sobre las cabeceras de las páginas |
+| `docs/` | Las páginas de la guía (`.mdx`). Cada carpeta es una sección con su `index.mdx` |
+| `catalogo/<type>/_tipo.yaml` | La declaración de un tipo de datos (los de este sitio describen el propio contrato) |
+| `catalogo/<type>/<id>.yaml` | Una entidad: el nombre del fichero es su id |
+| `diagramas/<id>.yaml` | Un diagrama, mostrado en las páginas con `<Diagram id="…" />` |
+| `skills/<name>/SKILL.md` | Skills que la plataforma **sirve a otros agentes** para trabajar con este sitio |
+| `.agents/skills/documentation/` | La skill para **ti**, el agente que escribe aquí |
+| `.claude/commands/questions.md` | `/questions`: rondas de preguntas para terminar de documentar una sección |
+| `.vscode/settings.json` | El catálogo de esquemas de la plataforma, para el autocompletado en el editor |
 
-Details and conventions: the `documentation` skill.
+Detalles y convenciones: la skill `documentation`.
 
-## Project skill
+## Skill del proyecto
 
-Before writing or changing anything, load the `documentation` skill (Skill
-tool in Claude Code, or read `.agents/skills/documentation/SKILL.md`). Its
-`SKILL.md` holds the mental model (the guide documents the contract and uses
-it; contract names vs this site's names), the rules that always apply and a
-routing table to the reference for the task: layout and menu, pages, catalog,
-diagrams, served skills and question rounds. Read only
-the references the task needs; a task crossing areas reads several.
+Antes de escribir o cambiar nada, carga la skill `documentation` (la
+herramienta Skill en Claude Code, o lee `.agents/skills/documentation/SKILL.md`).
+Su `SKILL.md` contiene el modelo mental (la guía documenta el contrato y lo usa;
+nombres del contrato frente a los de este sitio), las reglas que se aplican
+siempre y una tabla de rutas hacia la referencia de cada tarea: estructura y
+menú, páginas, catálogo, diagramas, skills servidas y rondas de preguntas. Lee
+solo las referencias que necesite la tarea; una tarea que cruza áreas lee
+varias.
 
-## Hard rules
+## Reglas estrictas
 
-### Never write a secret
+### Nunca escribas un secreto
 
-No password, token, API key, passphrase or private key enters this repository:
-not in a page, an entity, an example or a comment. A content repository is
-cloned onto servers and read by agents; whatever goes in stops being secret.
+Ninguna contraseña, token, clave de API, frase de paso ni clave privada entra en
+este repositorio: ni en una página, ni en una entidad, ni en un ejemplo, ni en
+un comentario. Un repositorio de contenido se clona en servidores y lo leen
+agentes; lo que entra aquí deja de ser secreto.
 
-- Document **where** the credential is and **which account** to use ("the
-  `admin` account, in the vault as connection `komodo`"), never its value.
-- If someone gives you a secret to document something, use it only for the
-  task and never copy it into a file.
-- If you find one already written, tell the user instead of carrying on.
+- Documenta **dónde** está la credencial y **qué cuenta** usar («la cuenta
+  `admin`, en la bóveda como conexión `komodo`»), nunca su valor.
+- Si alguien te da un secreto para documentar algo, úsalo solo para la tarea y
+  nunca lo copies en un fichero.
+- Si encuentras uno ya escrito, díselo al usuario en lugar de continuar.
 
-### Don't rename the contract
+### No renombres el contrato
 
-The platform reads a fixed set of names, written in Spanish: `catalogo/`,
-`_tipo.yaml`, `menu.yaml`, `diagramas/`, the keys of every YAML file, the field kinds,
-the common page header (`titulo`, `descripcion`, `icono`, `orden`,
-`actualizado`), `fuente` and `catalogo:` links. Translating them breaks
-validation. Everything else (type ids, field names, values, folders, prose) is
-this site's own and is written in English. The full table is in the skill,
+La plataforma lee un conjunto fijo de nombres, escritos en español: `catalogo/`,
+`_tipo.yaml`, `menu.yaml`, `diagramas/`, las claves de todo fichero YAML, los
+tipos de campo, la cabecera común de página (`titulo`, `descripcion`, `icono`,
+`orden`, `actualizado`), `fuente` y los enlaces `catalogo:`. Traducirlos rompe
+la validación. Todo lo demás (ids de tipo, nombres de campo, valores, carpetas,
+prosa) es propio de este sitio y se escribe en español; los ids de tipo, los
+nombres de campo, los valores y las carpetas que ya existen están en inglés y
+no se renombran, y la prosa va en español. La tabla completa está en la skill,
 `references/layout.md`.
 
-### Declare before use
+### Declara antes de usar
 
-The platform knows nothing about the domain: types and their fields are
-declared here. Never add an entity field its `_tipo.yaml` does not declare, or
-a page header field `doc.config.yaml` does not declare under `cabecera`.
+La plataforma no sabe nada del dominio: los tipos y sus campos se declaran
+aquí. Nunca añadas a una entidad un campo que su `_tipo.yaml` no declare, ni a
+una página un campo de cabecera que `doc.config.yaml` no declare bajo
+`cabecera`.
 
-### Pages have no code
+### Las páginas no llevan código
 
-Markdown and the platform's components (`Callout`, `Entities`, `Diagram`)
-only. Never `import`, `export` or `{…}` expressions: the platform rejects them.
-In prose, write anything with `<` or `{` inside backticks.
+Solo Markdown y los componentes de la plataforma (`Callout`, `Entities`,
+`Diagram`). Nunca `import`, `export` ni expresiones `{…}`: la plataforma las
+rechaza. En la prosa, escribe entre comillas invertidas todo lo que lleve `<` o
+`{`.
 
-### The menu and the YAML win
+### El menú y el YAML mandan
 
-Every page must be shown by `menu.yaml`; none may land in "Otros". Icons of
-the pages the menu shows are given there, not in their headers, and a title
-set in the menu must match the page's `titulo`. Every `icono` is a Lucide icon
-name.
+Toda página debe mostrarla `menu.yaml`; ninguna puede acabar en «Otros». Los
+iconos de las páginas que muestra el menú se indican allí, no en sus cabeceras,
+y un título fijado en el menú debe coincidir con el `titulo` de la página. Todo
+`icono` es un nombre de icono de Lucide.
 
-### One entity per file
+### Una entidad por fichero
 
-Never put several entities in one YAML or keep catalogs outside
-`catalogo/<type>/`. Structured data goes to the catalog; explanations, to a
-page.
+Nunca pongas varias entidades en un mismo YAML ni mantengas catálogos fuera de
+`catalogo/<type>/`. Los datos estructurados van al catálogo; las explicaciones,
+a una página.
 
-## Validation
+## Validación
 
-- The editor validates every YAML file, `menu.yaml` and the diagrams included,
-  through the platform's schema catalog
-  (`yaml.schemaStore.url` in `.vscode/settings.json`, which needs the Red Hat
-  YAML extension).
-- The platform validates each push when it syncs (at once for a hosted
-  repository, within five minutes, or right away from `/admin/content`).
-  Invalid declarations (`doc.config.yaml`, `menu.yaml`, a `_tipo.yaml`) never
-  replace valid ones; a broken page, entity or diagram is reported and the
-  rest is published. Admins see each problem on its page (those of
-  `menu.yaml` and the diagrams on the home), and the log has them all.
-- Before calling something done: every YAML you touched validates, and every
-  link, `ficha` field, reference, menu entry and diagram `entidad` points at
-  something that exists.
+- El editor valida cada fichero YAML, incluidos `menu.yaml` y los diagramas, a
+  través del catálogo de esquemas de la plataforma (`yaml.schemaStore.url` en
+  `.vscode/settings.json`, que requiere la extensión YAML de Red Hat).
+- La plataforma valida cada push al sincronizar (al instante en un repositorio
+  alojado en ella, en cinco minutos como máximo, o de inmediato desde
+  `/admin/content`). Las declaraciones inválidas (`doc.config.yaml`,
+  `menu.yaml`, un `_tipo.yaml`) nunca sustituyen a las válidas; una página,
+  entidad o diagrama roto se reporta y el resto se publica. Los administradores
+  ven cada problema en su página (los de `menu.yaml` y los diagramas, en la
+  portada), y el log los recoge todos.
+- Antes de dar algo por terminado: todo YAML que hayas tocado valida, y todo
+  enlace, campo `ficha`, referencia, entrada de menú y `entidad` de diagrama
+  apunta a algo que existe.
 
 ## Commits
 
-Only when the user asks. One sentence saying what changes and why, following
-the existing history. Never credit an AI tool: no `Co-Authored-By`, no
-"Generated with…".
+Solo cuando lo pida el usuario. Una frase que diga qué cambia y por qué,
+siguiendo el historial existente. Nunca acredites a una herramienta de IA: ni
+`Co-Authored-By`, ni «Generated with…».

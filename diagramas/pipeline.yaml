@@ -1,19 +1,19 @@
-titulo: From a push to the published site
-descripcion: A writer pushes the content repository, the platform syncs and validates it, and publishes it to the reader, the editor and AI agents
+titulo: De un push al sitio publicado
+descripcion: Quien escribe hace push al repositorio de contenido, la plataforma lo sincroniza y lo valida, y lo publica para el lector, el editor y los agentes de IA
 direccion: derecha
 nodos:
-  writer: { nombre: Writer, sub: a person or an agent, tipo: entrada }
-  repo: { nombre: Content repository, sub: git, tipo: almacen }
-  platform: { nombre: Platform, sub: syncs and validates }
-  reader: { nombre: Reader, sub: "the web, for people" }
-  editor: { nombre: Editor, sub: YAML completion }
-  agents: { nombre: AI agents, sub: llms.txt and llm.txt }
+  writer: { nombre: Autor, sub: una persona o un agente, tipo: entrada }
+  repo: { nombre: Repositorio de contenido, sub: git, tipo: almacen }
+  platform: { nombre: Plataforma, sub: sincroniza y valida }
+  reader: { nombre: Lector, sub: "la web, para personas" }
+  editor: { nombre: Editor, sub: autocompletado de YAML }
+  agents: { nombre: Agentes de IA, sub: llms.txt y llm.txt }
 conexiones:
   - writer -> repo: git push
-  - repo -> platform: sync on push, or every five minutes
-  - platform -> reader: pages, menu and catalog pages
-  - platform -> editor: the schema catalog
-  - platform -> agents: every page as Markdown
+  - repo -> platform: sincroniza al hacer push, o cada cinco minutos
+  - platform -> reader: páginas, menú y páginas del catálogo
+  - platform -> editor: el catálogo de esquemas
+  - platform -> agents: cada página como Markdown
 zonas:
-  yours: { titulo: Your side, nodos: [writer, repo, editor] }
-  platform: { titulo: The platform, nodos: [platform, reader, agents] }
+  yours: { titulo: Tu lado, nodos: [writer, repo, editor] }
+  platform: { titulo: La plataforma, nodos: [platform, reader, agents] }

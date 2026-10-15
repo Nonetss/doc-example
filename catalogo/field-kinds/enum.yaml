@@ -1,5 +1,5 @@
 family: choice
-value: "One of the values listed in valores"
+value: "Uno de los valores listados en valores"
 takes: "valores: [a, b]"
 example: "kind: { tipo: enum, valores: [physical, vm] } → kind: vm"
 fuente: manual

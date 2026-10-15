@@ -1,78 +1,78 @@
 ---
-titulo: Diagrams
-descripcion: A diagram is declared in its own YAML file under diagramas/ and shown in any page with the Diagram component
+titulo: Diagramas
+descripcion: Un diagrama se declara en su propio fichero YAML bajo diagramas/ y se muestra en cualquier página con el componente Diagram
 files: [diagram-file]
 components: [diagram]
 actualizado: 2026-10-15
 ---
 
-## Declared, not drawn
+## Declarado, no dibujado
 
-A diagram says which boxes exist, how they connect and how they group; the platform lays them out. No coordinates, no hand-made SVG, no text art. Each diagram is a file of its own, `diagramas/<id>.yaml`, so it is written once and shown wherever it helps:
+Un diagrama dice qué cajas existen, cómo se conectan y cómo se agrupan; la plataforma las coloca. Sin coordenadas, sin SVG hecho a mano, sin arte de texto. Cada diagrama es un fichero propio, `diagramas/<id>.yaml`, así que se escribe una vez y se muestra donde ayude:
 
 ```mdx
 <Diagram id="pipeline" />
 ```
 
-This is the one on this site's home:
+Este es el de la portada de este sitio:
 
 <Diagram id="pipeline" />
 
-## The file
+## El fichero
 
 ```yaml
 # diagramas/komodo.yaml → id: komodo
-titulo: How Komodo deploys
-descripcion: Komodo tells Periphery on every server to bring the stacks up
+titulo: Cómo despliega Komodo
+descripcion: Komodo le dice a Periphery, en cada servidor, que levante los stacks
 direccion: derecha
 nodos:
   komodo: { entidad: services/komodo }
-  periphery: { nombre: Periphery, sub: agent on every server, tipo: entrada }
+  periphery: { nombre: Periphery, sub: agente en cada servidor, tipo: entrada }
   stacks: Stacks
 conexiones:
   - komodo -> periphery: deploy
   - periphery -> stacks
 zonas:
-  home: { titulo: Home, nodos: [komodo, periphery] }
+  home: { titulo: Casa, nodos: [komodo, periphery] }
 ```
 
-| Key | What it is |
+| Clave | Qué es |
 | --- | --- |
-| `titulo` | Required. Its title, shown as its caption. |
-| `descripcion` | Required. What it shows, in one or two sentences: it is its text alternative and what agents read. |
-| `direccion` | Optional. `derecha` (left to right, the default) or `abajo` (top to bottom). Follow the flow: a chain of steps goes right, a hierarchy goes down. |
-| `nodos` | Required. The boxes, by id. |
-| `conexiones` | Optional. The arrows between them. |
-| `zonas` | Optional. Titled groups of boxes. |
+| `titulo` | Obligatoria. Su título, mostrado como pie. |
+| `descripcion` | Obligatoria. Qué muestra, en una o dos frases: es su texto alternativo y lo que leen los agentes. |
+| `direccion` | Opcional. `derecha` (de izquierda a derecha, el valor por defecto) o `abajo` (de arriba abajo). Sigue el flujo: una cadena de pasos va a la derecha, una jerarquía va hacia abajo. |
+| `nodos` | Obligatoria. Las cajas, por id. |
+| `conexiones` | Opcional. Las flechas entre ellas. |
+| `zonas` | Opcional. Grupos de cajas con título. |
 
-### Nodes
+### Nodos
 
-A node's id is lowercase, with digits and hyphens, and local to the diagram (`nas`, not `node3`). A node is one of:
+El id de un nodo va en minúsculas, con dígitos y guiones, y es local al diagrama (`nas`, no `node3`). Un nodo es una de estas cosas:
 
-- **An entity of the catalog:** `{ entidad: machines/nas }`. It takes its name, icon and link from the entity. Use it whenever the box exists in the catalog: the entity's page then lists the diagram.
-- **A named box:** `{ nombre: Periphery, sub: agent on every server }`. `sub` is a short line under the name.
-- **Just a name:** `stacks: Stacks`.
+- **Una entidad del catálogo:** `{ entidad: machines/nas }`. Toma su nombre, su icono y su enlace de la entidad. Úsala siempre que la caja exista en el catálogo: la página de la entidad lista entonces el diagrama.
+- **Una caja con nombre:** `{ nombre: Periphery, sub: agente en cada servidor }`. `sub` es una línea corta bajo el nombre.
+- **Solo un nombre:** `stacks: Stacks`.
 
-Any of them takes `icono` (a Lucide icon name) and `tipo`: `entrada` where the flow starts, `almacen` for data (disks, registries, databases).
+Cualquiera de ellos admite `icono` (el nombre de un icono de Lucide) y `tipo`: `entrada` donde empieza el flujo, `almacen` para datos (discos, registros, bases de datos).
 
-### Connections
+### Conexiones
 
-`from -> to`, or `from -> to: label` with the label saying **what travels** along it, in a few words: "encrypted backup every night", not "connection". Both ends are node ids.
+`origen -> destino`, o `origen -> destino: etiqueta`, con la etiqueta diciendo **qué viaja** por ella, en pocas palabras: "copia de seguridad cifrada cada noche", no "conexión". Ambos extremos son ids de nodo.
 
-### Zones
+### Zonas
 
-Where things are (home, the VPS, outside) or which network they belong to: a `titulo` and the `nodos` it holds. A node goes in one zone at most.
+Dónde están las cosas (casa, el VPS, fuera) o a qué red pertenecen: un `titulo` y los `nodos` que contiene. Un nodo va como máximo en una zona.
 
-## What gets reported
+## Qué se reporta
 
-The platform checks every diagram against the catalog. An entity that does not exist, a connection to a node that is not declared, a node in two zones, a missing title or an unknown key are reported on the file **and** on every page that shows it; whatever is valid still renders. A `Diagram` with an unknown id renders a notice, and a fenced block with the language `diagram` inside a page is reported: diagrams live in `diagramas/`.
+La plataforma valida cada diagrama contra el catálogo. Una entidad que no existe, una conexión a un nodo que no está declarado, un nodo en dos zonas, un título que falta o una clave desconocida se reportan en el fichero **y** en cada página que lo muestra; lo que sea válido se sigue mostrando. Un `Diagram` con un id desconocido muestra un aviso, y un bloque de código con el lenguaje `diagram` dentro de una página se reporta: los diagramas viven en `diagramas/`.
 
-## How it shows today
+## Cómo se muestra hoy
 
-Until the platform draws diagrams, one renders as text: its title and description as a caption, its zones with their boxes, and one line per connection ("Writer → Content repository: git push"), every entity linked to its page. It is also exactly what agents get in the page's Markdown. Writing them now costs nothing later: the format stays.
+Hasta que la plataforma dibuje los diagramas, se muestran como texto: su título y su descripción como pie, sus zonas con sus cajas y una línea por conexión ("Autor → Repositorio de contenido: git push"), con cada entidad enlazada a su página. Es también exactamente lo que reciben los agentes en el Markdown de la página. Escribirlos ahora no cuesta nada más adelante: el formato se mantiene.
 
-## Guidelines
+## Pautas
 
-- **One diagram, one idea.** Past about a dozen nodes, split it.
-- **Only the connections that matter** to understand the page; the rest goes in the text.
-- **Nothing sensitive** in labels or subtitles.
+- **Un diagrama, una idea.** A partir de una docena de nodos, divídelo.
+- **Solo las conexiones que importan** para entender la página; el resto va en el texto.
+- **Nada sensible** en etiquetas ni subtítulos.

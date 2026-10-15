@@ -1,5 +1,5 @@
-titulo: What a content repository holds
-descripcion: The declarations say what the content may hold and how it is shown; the pages cite the entities and show the diagrams
+titulo: Qué contiene un repositorio de contenido
+descripcion: Las declaraciones dicen qué puede contener el contenido y cómo se muestra; las páginas citan las entidades y muestran los diagramas
 direccion: derecha
 nodos:
   config: { entidad: files/doc-config }
@@ -9,12 +9,12 @@ nodos:
   entities: { entidad: files/entity }
   diagrams: { entidad: files/diagram-file }
 conexiones:
-  - config -> pages: declares their extra header fields
-  - menu -> pages: groups and orders them in the sidebar
-  - types -> entities: declare their fields
-  - pages -> entities: cite them with catalogo links and header fields
-  - pages -> diagrams: show them with the Diagram component
-  - diagrams -> entities: use them as nodes
+  - config -> pages: declara los campos adicionales de su cabecera
+  - menu -> pages: las agrupa y ordena en la barra lateral
+  - types -> entities: declaran sus campos
+  - pages -> entities: las citan con enlaces catalogo y campos de cabecera
+  - pages -> diagrams: los muestran con el componente Diagram
+  - diagrams -> entities: las usan como nodos
 zonas:
-  declarations: { titulo: Declarations, nodos: [config, menu, types] }
-  content: { titulo: Content, nodos: [pages, entities, diagrams] }
+  declarations: { titulo: Declaraciones, nodos: [config, menu, types] }
+  content: { titulo: Contenido, nodos: [pages, entities, diagrams] }

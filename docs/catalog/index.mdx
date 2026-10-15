@@ -1,23 +1,23 @@
 ---
-titulo: The catalog
-descripcion: Repeated facts with the same shape live as data in catalogo/, declared by type, one entity per file
+titulo: El catálogo
+descripcion: Los datos repetidos con la misma forma viven como datos en catalogo/, declarados por tipo, una entidad por fichero
 files: [type-declaration, entity]
 actualizado: 2026-10-15
 ---
 
-## Data or a page?
+## ¿Datos o página?
 
-Some facts repeat with the same shape: every machine has an IP, a location and an operating system. Written in pages they get copied, drift apart and can't be listed. In the catalog they are **data**: one file per thing, checked against its type, shown as tables and linked from the pages that talk about them.
+Algunos datos se repiten con la misma forma: cada máquina tiene una IP, una ubicación y un sistema operativo. Escritos en páginas, se copian, se desincronizan y no se pueden listar. En el catálogo son **datos**: un fichero por cosa, validado contra su tipo, mostrado como tablas y enlazado desde las páginas que hablan de ellos.
 
-- **The catalog** holds the facts: the IP, the location, the version.
-- **A page** holds the explanation: why it is set up that way, how to change it. It cites the entities instead of copying them.
+- **El catálogo** guarda los datos: la IP, la ubicación, la versión.
+- **Una página** guarda la explicación: por qué está configurado así, cómo cambiarlo. Cita las entidades en lugar de copiarlas.
 
-## How it is made
+## Cómo se hace
 
-1. **A type** is a folder under `catalogo/` with its declaration, `_tipo.yaml`: its name, its fields and the kind of each one. See [Types](types.mdx).
-2. **An entity** is one YAML file in that folder; the file name is its id. See [Entities](entities.mdx).
-3. **The reader** shows it: a table in any page with the `Entities` component, and a page per type and per entity. See [In the reader](reader.mdx).
+1. **Un tipo** es una carpeta dentro de `catalogo/` con su declaración, `_tipo.yaml`: su nombre, sus campos y el tipo de cada uno. Consulta [Tipos](types.mdx).
+2. **Una entidad** es un fichero YAML en esa carpeta; el nombre del fichero es su id. Consulta [Entidades](entities.mdx).
+3. **El lector** la muestra: una tabla en cualquier página con el componente `Entities`, y una página por tipo y por entidad. Consulta [En el lector](reader.mdx).
 
-The platform does not know any type: a site declares its own. This site's catalog describes the platform's contract itself, so its tables are the reference of this guide: [files](catalogo:files), [field kinds](catalogo:field-kinds), [header fields](catalogo:header-fields) and [components](catalogo:components).
+La plataforma no conoce ningún tipo: cada sitio declara los suyos. El catálogo de este sitio describe el propio contrato de la plataforma, así que sus tablas son la referencia de esta guía: [ficheros](catalogo:files), [tipos de campo](catalogo:field-kinds), [campos de la cabecera](catalogo:header-fields) y [componentes](catalogo:components).
 
 <Diagram id="repository" />

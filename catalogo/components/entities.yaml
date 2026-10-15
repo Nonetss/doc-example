@@ -1,15 +1,15 @@
 tag: "<Entities>"
-purpose: The table of the valid entities of a catalog type
+purpose: La tabla de las entidades válidas de un tipo del catálogo
 attributes:
   - name: type
     required: true
-    meaning: The type, as the name of its folder in catalogo/
+    meaning: El tipo, como el nombre de su carpeta en catalogo/
   - name: columns
     required: false
-    meaning: The fields to show, separated by commas (id too); without it, the type's vista.columnas
+    meaning: Los campos que se muestran, separados por comas (también id); sin él, la vista.columnas del tipo
   - name: group
     required: false
-    meaning: A field that splits the table into one block per value
+    meaning: Un campo que divide la tabla en un bloque por valor
 page: pages/components
 fuente: manual
 actualizado: 2026-10-15

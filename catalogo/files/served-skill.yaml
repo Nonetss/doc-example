@@ -1,7 +1,7 @@
 path: skills/<name>/SKILL.md
 kind: agents
 required: false
-purpose: A skill the platform serves to other agents so they know how to work with the site
+purpose: Una skill que la plataforma sirve a otros agentes para que sepan cómo trabajar con el sitio
 page: publishing/agents
 fuente: manual
 actualizado: 2026-10-15

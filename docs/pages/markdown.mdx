@@ -1,58 +1,58 @@
 ---
 titulo: Markdown
-descripcion: What a page body may hold, how its links and images resolve, and what the platform refuses
+descripcion: Qué puede contener el cuerpo de una página, cómo se resuelven sus enlaces e imágenes, y qué rechaza la plataforma
 files: [page]
 orden: 2
 actualizado: 2026-10-15
 ---
 
-## What it accepts
+## Qué acepta
 
-- **GitHub-flavoured Markdown:** tables, task lists, strikethrough, autolinks and footnotes.
-- **Headings from `##`:** the title is the header's `titulo`, so a `#` heading in the body is reported. `##` and `###` headings make the page's "En esta página" index.
-- **Code blocks** keep their language and get a copy button.
-- **Alerts:** a quote that starts with `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` or `[!CAUTION]`.
+- **Markdown de GitHub:** tablas, listas de tareas, tachado, autoenlaces y notas al pie.
+- **Encabezados desde `##`:** el título es el `titulo` de la cabecera, así que un encabezado `#` en el cuerpo se reporta. Los encabezados `##` y `###` forman el índice "En esta página" de la página.
+- **Bloques de código:** conservan su lenguaje y tienen un botón de copiar.
+- **Alertas:** una cita que empieza por `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` o `[!CAUTION]`.
 
 ```mdx
 > [!WARNING]
-> This restarts the router.
+> Esto reinicia el router.
 ```
 
 > [!WARNING]
-> This restarts the router.
+> Esto reinicia el router.
 
-- **Comments:** a comment between braces and `/* */` is dropped without a problem.
+- **Comentarios:** un comentario entre llaves y `/* */` se descarta sin problema.
 
-## Links
+## Enlaces
 
-| To link to… | Write | It leads to |
+| Para enlazar a… | Escribe | Lleva a |
 | --- | --- | --- |
-| Another page | Its relative path with `.mdx`: `[DNS](../network/dns.mdx#zones)` | That page, keeping the anchor |
-| An entity | `[docker-01](catalogo:machines/docker-01)` | The entity's page, or its [catalog page](../catalog/reader.mdx) when it has none |
-| A catalog type | `[Machines](catalogo:machines)` | The type's catalog page |
-| An outside site | The full `https://` URL | That site, in a new tab |
+| Otra página | Su ruta relativa con `.mdx`: `[DNS](../network/dns.mdx#zones)` | Esa página, conservando el ancla |
+| Una entidad | `[docker-01](catalogo:machines/docker-01)` | La página de la entidad, o su [página de catálogo](../catalog/reader.mdx) cuando no tiene |
+| Un tipo del catálogo | `[Machines](catalogo:machines)` | La página de catálogo del tipo |
+| Un sitio externo | La URL `https://` completa | Ese sitio, en una pestaña nueva |
 
-A link to a page, type or entity that does not exist is reported and shown as plain text. Linking to an entity also counts as citing it: its page lists yours.
+Un enlace a una página, tipo o entidad que no existe se reporta y se muestra como texto plano. Enlazar a una entidad también cuenta como citarla: su página lista la tuya.
 
-## Images
+## Imágenes
 
-A relative path to a `png`, `jpg`, `jpeg`, `gif`, `webp`, `avif` or `svg` file under `docs/`, up to 10 MiB, usually in an `img/` folder next to the page:
+Una ruta relativa a un fichero `png`, `jpg`, `jpeg`, `gif`, `webp`, `avif` o `svg` bajo `docs/`, de hasta 10 MiB, normalmente en una carpeta `img/` junto a la página:
 
 ```mdx
-![The Komodo panel](img/panel.png)
+![El panel de Komodo](img/panel.png)
 ```
 
-The reader opens them enlarged with zoom. A missing image, or a link to any other kind of file, is reported. For a picture of how things connect, write a [diagram](../diagrams/index.mdx) instead.
+El lector las abre ampliadas con zoom. Una imagen que falta, o un enlace a cualquier otro tipo de fichero, se reporta. Para una imagen de cómo se conectan las cosas, escribe mejor un [diagrama](../diagrams/index.mdx).
 
-## What it refuses
+## Qué rechaza
 
-| Written | What happens |
+| Escrito | Qué ocurre |
 | --- | --- |
-| `import` or `export` | Reported on its line and left out |
-| An expression between braces | Reported and left out; the text around it renders |
-| A component the platform does not have | Reported, and a notice naming it renders in its place |
-| A platform component inside a paragraph | Reported: it goes in a block of its own |
-| A fenced block with the language `diagram` | Reported: diagrams go in `diagramas/` |
-| A page that cannot be parsed | Reported with the parser's line; only its header shows |
+| `import` o `export` | Se reporta en su línea y se omite |
+| Una expresión entre llaves | Se reporta y se omite; el texto que la rodea se renderiza |
+| Un componente que la plataforma no tiene | Se reporta, y en su lugar se renderiza un aviso que lo nombra |
+| Un componente de la plataforma dentro de un párrafo | Se reporta: va en un bloque propio |
+| Un bloque delimitado con el lenguaje `diagram` | Se reporta: los diagramas van en `diagramas/` |
+| Una página que no se puede analizar | Se reporta con la línea del analizador; solo se muestra su cabecera |
 
-Every problem names the file and the line. Admins see them above the page; other readers only see the page.
+Cada problema nombra el fichero y la línea. Los administradores los ven sobre la página; el resto de lectores solo ve la página.

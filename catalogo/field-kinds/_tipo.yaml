@@ -1,23 +1,23 @@
-nombre: Field kind
-plural: Field kinds
+nombre: Tipo de campo
+plural: Tipos de campo
 icono: shapes
-descripcion: The kinds a catalog field or a page header field can be. The id is the kind as written in `tipo`
+descripcion: Los tipos que puede tener un campo de catálogo o un campo de la cabecera de una página. El id es el tipo tal como se escribe en `tipo`
 
 campos:
   family:
     tipo: enum
     valores: [scalar, choice, reference, composite]
-    descripcion: "scalar: a single value; choice: one of a list; reference: points at something else; composite: holds other fields"
+    descripcion: "scalar: un único valor; choice: uno de una lista; reference: apunta a otra cosa; composite: contiene otros campos"
   value:
     tipo: texto
-    descripcion: What a value of this kind looks like
+    descripcion: Qué aspecto tiene un valor de este tipo
   takes:
     tipo: texto
     opcional: true
-    descripcion: The extra key the declaration needs (valores, a, de, campos)
+    descripcion: La clave adicional que necesita la declaración (valores, a, de, campos)
   example:
     tipo: texto
-    descripcion: A declaration and a value, as they are written
+    descripcion: Una declaración y un valor, tal como se escriben
 
 vista:
   columnas: [id, value, takes, example]

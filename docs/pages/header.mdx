@@ -1,17 +1,17 @@
 ---
-titulo: The header
-descripcion: The YAML block every page starts with, the fields every page has and the ones a site adds
+titulo: La cabecera
+descripcion: El bloque YAML con el que empieza toda página, los campos que tiene cualquier página y los que añade un sitio
 files: [page, doc-config]
 orden: 1
 actualizado: 2026-10-15
 ---
 
-## The block
+## El bloque
 
 ```mdx
 ---
 titulo: DNS
-descripcion: How the home names are resolved
+descripcion: Cómo se resuelven los nombres de casa
 icono: globe
 orden: 2
 actualizado: 2026-10-15
@@ -19,18 +19,18 @@ machines: [docker-01]
 ---
 ```
 
-## The fields every page has
+## Los campos que tiene toda página
 
 <Entities type="header-fields" columns="id,required,kind,meaning,rule" />
 
-- A page without a valid header is still published, titled with its file name, and its problems are reported.
-- Every `icono` of the platform is a Lucide icon name; one Lucide does not have is reported and not drawn.
-- `actualizado` is the date of the data: past six months, the page header marks it "Revisar".
+- Una página sin una cabecera válida se publica igualmente, titulada con el nombre de su fichero, y sus problemas se reportan.
+- Todo `icono` de la plataforma es un nombre de icono de Lucide; uno que Lucide no tenga se reporta y no se dibuja.
+- `actualizado` es la fecha de los datos: pasados seis meses, la cabecera de la página lo marca como "Revisar".
 
-## The site's own fields
+## Los campos propios del sitio
 
-Any other field must be declared under `cabecera` in [`doc.config.yaml`](../repository/config.mdx), with its kind. A `ref` field (`machines: [docker-01]`) shows its entities as links, and each entity lists the page as one that cites it. An undeclared field is reported.
+Cualquier otro campo debe declararse bajo `cabecera` en [`doc.config.yaml`](../repository/config.mdx), con su tipo. Un campo `ref` (`machines: [docker-01]`) muestra sus entidades como enlaces, y cada entidad lista la página como una que la cita. Un campo sin declarar se reporta.
 
-## The menu wins
+## El menú manda
 
-When [`menu.yaml`](../repository/menu.mdx) gives a page a title or an icon, that is the one shown everywhere, and a header that disagrees is reported. Give the icons of the pages the menu shows in the menu and leave `icono` out of their headers. `titulo` stays in every header, since it is required: set a title in the menu only when the sidebar needs a different one, and the page then shows the menu's.
+Cuando [`menu.yaml`](../repository/menu.mdx) da a una página un título o un icono, ese es el que se muestra en todas partes, y una cabecera que discrepe se reporta. Pon en el menú los iconos de las páginas que el menú muestra y deja `icono` fuera de sus cabeceras. `titulo` se queda en cada cabecera, ya que es obligatorio: define un título en el menú solo cuando la barra lateral necesite uno distinto, y la página mostrará entonces el del menú.

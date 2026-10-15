@@ -1,6 +1,6 @@
 required: false
 kind: texto
-meaning: The page's icon, in the sidebar, the page header and its card
-rule: A Lucide icon name (server, map-pin); menu.yaml can give another one, and then that one wins
+meaning: El icono de la página, en la barra lateral, la cabecera de la página y su tarjeta
+rule: Un nombre de icono de Lucide (server, map-pin); menu.yaml puede dar otro, y entonces prevalece ese
 fuente: manual
 actualizado: 2026-10-15

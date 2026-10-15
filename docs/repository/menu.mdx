@@ -1,57 +1,57 @@
 ---
-titulo: The menu
-descripcion: menu.yaml decides what the sidebar shows, grouped and ordered, wherever the pages are stored
+titulo: El menú
+descripcion: menu.yaml decide qué muestra la barra lateral, agrupado y ordenado, estén donde estén guardadas las páginas
 files: [menu]
 orden: 2
 actualizado: 2026-10-15
 ---
 
-## Without a menu
+## Sin menú
 
-Without `menu.yaml`, the sidebar is the folders of `docs/`: each folder is a section, ordered by the `orden` of its `index.mdx` and then by title, and the catalog comes last. It works, but grouping pages differently means moving files, and moving a file changes its URL.
+Sin `menu.yaml`, la barra lateral son las carpetas de `docs/`: cada carpeta es una sección, ordenada por el `orden` de su `index.mdx` y luego por título, y el catálogo va al final. Funciona, pero agrupar las páginas de otra manera obliga a mover ficheros, y mover un fichero cambia su URL.
 
-## With a menu
+## Con menú
 
-`menu.yaml` lists the sidebar's groups, in order. Each group has a title, an icon, a description and its entries:
+`menu.yaml` lista los grupos de la barra lateral, en orden. Cada grupo tiene un título, un icono, una descripción y sus entradas:
 
 ```yaml
 secciones:
-  - titulo: Infrastructure
+  - titulo: Infraestructura
     icono: server
-    descripcion: The machines and the network
+    descripcion: Las máquinas y la red
     paginas:
-      - network                                   # a folder, with all its pages
-      - { ruta: containers/komodo, icono: layers } # with its own title or icon
-      - backups/duplicati/create-backup             # a single page
-  - titulo: Data
+      - network                                   # una carpeta, con todas sus páginas
+      - { ruta: containers/komodo, icono: layers } # con su propio título o icono
+      - backups/duplicati/create-backup             # una sola página
+  - titulo: Datos
     icono: database
-    paginas: [catalogo]                           # the catalog; or catalogo/machines
+    paginas: [catalogo]                           # el catálogo; o catalogo/machines
 ```
 
-| Key | What it is |
+| Clave | Qué es |
 | --- | --- |
-| `secciones` | The groups, at least one. |
-| `titulo` | Required. The group's title in the sidebar. |
-| `icono` | Optional. A Lucide icon name. |
-| `descripcion` | Optional. One sentence on what the group holds. |
-| `paginas` | Required. Its entries: a path, or `ruta` with an optional `titulo` and `icono`. |
+| `secciones` | Los grupos, al menos uno. |
+| `titulo` | Obligatoria. El título del grupo en la barra lateral. |
+| `icono` | Opcional. El nombre de un icono de Lucide. |
+| `descripcion` | Opcional. Una frase sobre qué contiene el grupo. |
+| `paginas` | Obligatoria. Sus entradas: una ruta, o `ruta` con un `titulo` e `icono` opcionales. |
 
-An entry names a page (`network/dns`), a folder of `docs/` (`network`, which brings all its pages in their usual order), the catalog (`catalogo`) or one catalog type (`catalogo/machines`). **Folders store the pages; the menu decides where they show.** A group can gather folders from anywhere, and every page keeps its URL.
+Una entrada nombra una página (`network/dns`), una carpeta de `docs/` (`network`, que trae todas sus páginas en su orden habitual), el catálogo (`catalogo`) o un tipo del catálogo (`catalogo/machines`). **Las carpetas guardan las páginas; el menú decide dónde se muestran.** Un grupo puede reunir carpetas de cualquier sitio, y cada página conserva su URL.
 
-This site's own menu is a good example: look at its `menu.yaml`.
+El menú de este propio sitio es un buen ejemplo: consulta su `menu.yaml`.
 
-## The menu wins
+## El menú manda
 
-What the menu says about an entry is what every view shows: the sidebar, the page header, the breadcrumbs, the cards, the search and `llms.txt`. A page header only counts for what the menu leaves out.
+Lo que el menú dice de una entrada es lo que muestra cada vista: la barra lateral, la cabecera de la página, las migas de pan, las tarjetas, la búsqueda y `llms.txt`. La cabecera de una página solo cuenta para lo que el menú deja sin decir.
 
-- `{ ruta: network, icono: network }` gives the section its icon; the `icono` of `docs/network/index.mdx` is then ignored.
-- When the header says something else, the page is reported ("la cabecera dice…, pero manda menu.yaml"), so nobody edits a value that never shows.
-- Breadcrumbs start with the group, as plain text: a group is a heading, not a page.
+- `{ ruta: network, icono: network }` da a la sección su icono; el `icono` de `docs/network/index.mdx` se ignora entonces.
+- Cuando la cabecera dice otra cosa, la página se reporta ("la cabecera dice…, pero manda menu.yaml"), para que nadie edite un valor que nunca se muestra.
+- Las migas de pan empiezan por el grupo, como texto plano: un grupo es un encabezado, no una página.
 
-## What gets reported
+## Qué se reporta
 
-- An entry that names nothing, the home, or something an earlier entry already shows (the same path, a folder holding it, or a page inside it): reported and skipped. The rest of the menu is used.
-- A page or catalog type that no entry shows: listed in a last group, **"Otros"**, and reported on the page. Nothing written is lost from the sidebar.
-- A badly formed `menu.yaml` (an unknown key, a missing title, an icon Lucide does not have): it is a declaration, so the platform keeps the last valid version until it is fixed.
+- Una entrada que no nombra nada, la página de inicio, o algo que una entrada anterior ya muestra (la misma ruta, una carpeta que la contiene o una página dentro de ella): se reporta y se omite. El resto del menú se usa.
+- Una página o tipo del catálogo que ninguna entrada muestra: se lista en un último grupo, **"Otros"**, y se reporta en la página. Nada de lo escrito se pierde de la barra lateral.
+- Un `menu.yaml` mal formado (una clave desconocida, un título que falta, un icono que Lucide no tiene): es una declaración, así que la plataforma mantiene la última versión válida hasta que se corrija.
 
-The problems of `menu.yaml` show to admins on the repository's home.
+Los problemas de `menu.yaml` se muestran a los administradores en la página de inicio del repositorio.

@@ -1,37 +1,37 @@
 ---
-titulo: Sync and problems
-descripcion: How a push becomes the published site, what happens when something is wrong and where the problems show
+titulo: Sincronización y problemas
+descripcion: Cómo un push se convierte en el sitio publicado, qué ocurre cuando algo falla y dónde se muestran los problemas
 actualizado: 2026-10-15
 ---
 
 <Diagram id="pipeline" />
 
-## Sync
+## Sincronización
 
-The platform keeps a clone of every content repository and syncs it:
+La plataforma mantiene un clon de cada repositorio de contenido y lo sincroniza:
 
-- at once, on every push to a repository hosted on the platform;
-- every five minutes, and when the platform starts;
-- when an admin presses **Sincronizar** in `/admin/content`.
+- al instante, en cada push a un repositorio alojado en la plataforma;
+- cada cinco minutos, y cuando la plataforma arranca;
+- cuando un administrador pulsa **Sincronizar** en `/admin/content`.
 
-Each sync leaves the clone exactly as the branch is. If the remote does not answer, the platform keeps serving the last checkout and `/admin/content` shows the error.
+Cada sincronización deja el clon exactamente como está la rama. Si el remoto no responde, la plataforma sigue sirviendo la última copia y `/admin/content` muestra el error.
 
-## Validation
+## Validación
 
-Every sync reads the repository in two steps:
+Cada sincronización lee el repositorio en dos pasos:
 
-1. **The declarations:** `doc.config.yaml`, `menu.yaml` and every `_tipo.yaml`. If any of them is broken, the platform keeps the last valid declarations and logs every problem. Nothing else changes until they are fixed.
-2. **The content:** pages, entities and diagrams. Each one is checked on its own; a broken one is reported and the rest is published.
+1. **Las declaraciones:** `doc.config.yaml`, `menu.yaml` y cada `_tipo.yaml`. Si alguna está rota, la plataforma conserva las últimas declaraciones válidas y registra cada problema. Nada más cambia hasta que se corrijan.
+2. **El contenido:** páginas, entidades y diagramas. Cada uno se valida por separado; el que esté roto se reporta y el resto se publica.
 
-## Where problems show
+## Dónde se muestran los problemas
 
-- **On the page,** to admins only, above its body: the file, the line and what is wrong. Other readers see the page as it could be read.
-- **On the repository's home,** to admins: the problems of `menu.yaml`, of the diagrams and of files under `docs/catalogo/`.
-- **In the log,** once per commit, with the repository and the file.
+- **En la página,** solo a los administradores, encima de su cuerpo: el fichero, la línea y qué falla. Los demás lectores ven la página tal como se puede leer.
+- **En la portada del repositorio,** a los administradores: los problemas de `menu.yaml`, de los diagramas y de los ficheros bajo `docs/catalogo/`.
+- **En el log,** una vez por commit, con el repositorio y el fichero.
 
-## Where do I find…?
+## ¿Dónde encuentro…?
 
-| I want to… | Page |
+| Quiero… | Página |
 | --- | --- |
-| Completion and validation while I write | [The editor](editor.mdx) |
-| An AI agent reading the documentation | [Agents](agents.mdx) |
+| Autocompletado y validación mientras escribo | [El editor](editor.mdx) |
+| Un agente de IA que lea la documentación | [Agentes](agents.mdx) |

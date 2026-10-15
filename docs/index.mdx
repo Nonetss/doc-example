@@ -1,31 +1,31 @@
 ---
-titulo: Writing documentation
-descripcion: How to write a content repository the doc platform publishes, from the first page to the menu, the catalog and the diagrams
+titulo: Escribir documentación
+descripcion: Cómo escribir un repositorio de contenido que la plataforma doc publique, desde la primera página hasta el menú, el catálogo y los diagramas
 ---
 
-The platform does not hold any documentation itself: it reads it from a **content repository**, a git repository with pages in MDX and data in YAML. This site is one of them, and it explains how to write one. Everything it describes it also uses, so its own files are the examples: its [menu](repository/menu.mdx) is a `menu.yaml`, its [reference tables](catalogo:files) come from its catalog and the diagrams below are files under `diagramas/`.
+La plataforma no guarda ninguna documentación por sí misma: la lee de un **repositorio de contenido**, un repositorio git con páginas en MDX y datos en YAML. Este sitio es uno de ellos y explica cómo escribir otro. Todo lo que describe también lo usa, así que sus propios ficheros son los ejemplos: su [menú](repository/menu.mdx) es un `menu.yaml`, sus [tablas de referencia](catalogo:files) salen de su catálogo y los diagramas de abajo son ficheros de `diagramas/`.
 
-If this is your first time, start with [Getting started](getting-started.mdx).
+Si es la primera vez, empieza por [Primeros pasos](getting-started.mdx).
 
-## How it all fits together
+## Cómo encaja todo
 
 <Diagram id="pipeline" />
 
-You only write files and push them. The platform syncs the repository, checks every file against its contract and publishes what is valid: the web for people, the schemas your editor completes with, and the Markdown agents read.
+Solo escribes ficheros y haces push. La plataforma sincroniza el repositorio, comprueba cada fichero contra su contrato y publica lo que es válido: la web para las personas, los esquemas con los que tu editor autocompleta y el Markdown que leen los agentes.
 
-## What a repository holds
+## Qué contiene un repositorio
 
 <Entities type="files" />
 
 <Diagram id="repository" />
 
-## Where do I find…?
+## ¿Dónde encuentro…?
 
-| I want to… | Page |
+| Quiero… | Página |
 | --- | --- |
-| Start a repository and see it published | [Getting started](getting-started.mdx) |
-| Choose what shows in the sidebar | [The menu](repository/menu.mdx) |
-| Write a page | [Pages](pages/index.mdx) |
-| Keep repeated facts as data | [The catalog](catalog/index.mdx) |
-| Draw how things connect | [Diagrams](diagrams/index.mdx) |
-| Know why my change does not show | [Sync and problems](publishing/index.mdx) |
+| Crear un repositorio y verlo publicado | [Primeros pasos](getting-started.mdx) |
+| Elegir qué se muestra en la barra lateral | [El menú](repository/menu.mdx) |
+| Escribir una página | [Páginas](pages/index.mdx) |
+| Mantener como datos los hechos que se repiten | [El catálogo](catalog/index.mdx) |
+| Dibujar cómo se conectan las cosas | [Diagramas](diagrams/index.mdx) |
+| Saber por qué no aparece mi cambio | [Sincronización y problemas](publishing/index.mdx) |

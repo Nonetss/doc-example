@@ -1,70 +1,75 @@
-# Writing documentation
+# Escribir documentación
 
-A **content repository** for the `doc` platform: the guide to writing one. It
-explains how to write the pages, the menu, the catalog and the diagrams the
-platform publishes, and it uses every one of those features itself, so its
-own files are the examples. Copy it to start your own documentation.
+Un **repositorio de contenido** para la plataforma `doc`: la guía para
+escribir uno. Explica cómo escribir las páginas, el menú, el catálogo y los
+diagramas que publica la plataforma, y usa cada una de esas funciones en sí
+misma, de modo que sus propios ficheros son los ejemplos. Cópialo para empezar
+tu propia documentación.
 
-It holds only content. The platform, a separate repository, clones it,
-validates it and publishes it: a web for people, a schema catalog for your
-editor, and `llms.txt` and each page's `llm.txt` for AI agents. Nothing here
-is built or run.
+Solo contiene contenido. La plataforma, que es otro repositorio, lo clona, lo
+valida y lo publica: una web para personas, un catálogo de esquemas para tu
+editor, y `llms.txt` y el `llm.txt` de cada página para los agentes de IA. Aquí
+no se compila ni se ejecuta nada.
 
-## What's inside
+## Qué contiene
 
-| Path | What it holds |
+| Ruta | Qué contiene |
 | --- | --- |
-| `doc.config.yaml` | The site: its name, the platform contract version and the extra header fields its pages use |
-| `menu.yaml` | The sidebar: four groups (Start, Writing, Data, Publishing) and what each shows |
-| `docs/` | The guide's pages, in MDX. Every folder is a section with its `index.mdx` |
-| `catalogo/<type>/` | The contract itself as data: the `files` of a repository, the `field-kinds`, the `header-fields` and the page `components`. The guide's reference tables are built from it |
-| `diagramas/` | The guide's diagrams, each shown in several pages with `<Diagram id="…" />` |
-| `skills/doc-writing/SKILL.md` | A skill the platform serves to other agents that write documentation |
-| `AGENTS.md`, `.agents/`, `.claude/` | Instructions for the AI agent that writes in this repository |
-| `.vscode/settings.json` | Completion and validation for every YAML file, from the platform |
+| `doc.config.yaml` | El sitio: su nombre, la versión del contrato de la plataforma y los campos extra de cabecera que usan sus páginas |
+| `menu.yaml` | La barra lateral: cuatro grupos (Inicio, Escritura, Datos, Publicación) y lo que muestra cada uno |
+| `docs/` | Las páginas de la guía, en MDX. Cada carpeta es una sección con su `index.mdx` |
+| `catalogo/<type>/` | El propio contrato como datos: los `files` de un repositorio, los `field-kinds`, los `header-fields` y los `components` de página. Las tablas de referencia de la guía se construyen a partir de él |
+| `diagramas/` | Los diagramas de la guía, cada uno mostrado en varias páginas con `<Diagram id="…" />` |
+| `skills/doc-writing/SKILL.md` | Una skill que la plataforma sirve a otros agentes que escriben documentación |
+| `AGENTS.md`, `.agents/`, `.claude/` | Instrucciones para el agente de IA que escribe en este repositorio |
+| `.vscode/settings.json` | Autocompletado y validación de todos los ficheros YAML, a partir de la plataforma |
 
-## Contract names vs your names
+## Nombres del contrato frente a los tuyos
 
-The platform reads a fixed set of names, written in **Spanish**, and they must
-stay exactly as they are: the files and folders (`doc.config.yaml`,
-`menu.yaml`, `docs/`, `catalogo/`, `_tipo.yaml`, `diagramas/`), the keys of
-each YAML file, the field kinds (`texto`, `ref`, `lista`…), the header every
-page has (`titulo`, `descripcion`, `icono`, `orden`, `actualizado`) and
-`catalogo:` links. Everything else is yours, in whatever language you write.
-The full table is in `docs/repository/index.mdx`.
+La plataforma lee un conjunto fijo de nombres, escritos en **español**, que
+deben quedarse exactamente como están: los ficheros y carpetas
+(`doc.config.yaml`, `menu.yaml`, `docs/`, `catalogo/`, `_tipo.yaml`,
+`diagramas/`), las claves de cada fichero YAML, los tipos de campo (`texto`,
+`ref`, `lista`…), la cabecera que tiene toda página (`titulo`, `descripcion`,
+`icono`, `orden`, `actualizado`) y los enlaces `catalogo:`. Todo lo demás es
+tuyo, en el idioma en que escribas. La tabla completa está en
+`docs/repository/index.mdx`.
 
-## Using it as a starting point
+## Usarlo como punto de partida
 
-1. **Copy this repository** and replace its pages, menu, catalog types and
-   diagrams with your own; keep `doc.config.yaml`'s keys and change its values.
-2. **Register it on the platform** at `/admin/content`: a name, a slug, and
-   either the repository's `https://` URL and branch, or "hosted on the
-   platform" to push it to the platform itself.
-3. **Point your editor at it.** Install the Red Hat YAML extension
-   (`redhat.vscode-yaml`, suggested by `.vscode/extensions.json`) and set
-   `yaml.schemaStore.url` in `.vscode/settings.json` to the catalog URL that
-   `/admin/content` shows for your repository. Ctrl+Space then suggests every
-   key, the values of each enum, the ids each reference accepts, the paths a
-   menu entry can name and the icon names. In a multi-folder workspace, put
-   that setting in the workspace's settings instead.
-4. **Developing against a local platform** (`https://localhost:4321`): the
-   extension doesn't trust the local certificate. Add
-   `"http.proxyStrictSSL": false` to your editor's **user** settings while you
-   do, and remove it afterwards.
+1. **Copia este repositorio** y sustituye sus páginas, su menú, sus tipos de
+   catálogo y sus diagramas por los tuyos; conserva las claves de
+   `doc.config.yaml` y cambia sus valores.
+2. **Regístralo en la plataforma** en `/admin/content`: un nombre, un slug, y
+   o bien la URL `https://` del repositorio y su rama, o bien «alojado en la
+   plataforma» para hacer push a la propia plataforma.
+3. **Apunta tu editor a él.** Instala la extensión YAML de Red Hat
+   (`redhat.vscode-yaml`, sugerida por `.vscode/extensions.json`) y define
+   `yaml.schemaStore.url` en `.vscode/settings.json` con la URL del catálogo
+   que `/admin/content` muestra para tu repositorio. Con Ctrl+Espacio el editor
+   sugiere cada clave, los valores de cada enum, los ids que acepta cada
+   referencia, las rutas que puede nombrar una entrada del menú y los nombres
+   de icono. En un espacio de trabajo con varias carpetas, pon ese ajuste en la
+   configuración del espacio de trabajo.
+4. **Si desarrollas contra una plataforma local** (`https://localhost:4321`):
+   la extensión no confía en el certificado local. Añade
+   `"http.proxyStrictSSL": false` a la configuración de **usuario** de tu
+   editor mientras lo hagas, y quítalo después.
 
-The guide itself, once published, explains each step in detail: start with
-its "Getting started" page.
+La propia guía, una vez publicada, explica cada paso en detalle: empieza por
+su página «Primeros pasos».
 
-## Writing with an AI agent
+## Escribir con un agente de IA
 
-`AGENTS.md` (imported by `CLAUDE.md`) and the `documentation` skill tell an
-agent how this repository is organised and how the guide's pages are written.
-`/questions <section>` runs a question round to finish a section: the agent
-writes the questions in `questions.md`, someone answers them, and
-`/questions` again moves the answers into the pages.
+`AGENTS.md` (importado por `CLAUDE.md`) y la skill `documentation` le indican a
+un agente cómo está organizado este repositorio y cómo se escriben las páginas
+de la guía. `/questions <section>` ejecuta una ronda de preguntas para
+terminar una sección: el agente escribe las preguntas en `questions.md`,
+alguien las responde y, al ejecutar `/questions` de nuevo, pasa las respuestas
+a las páginas.
 
-## The one rule
+## La única regla
 
-**No secret ever goes in a content repository**: no password, token, API key
-or passphrase, anywhere. Pages say which account is used and where its
-credentials live, never their value.
+**Ningún secreto entra nunca en un repositorio de contenido**: ni contraseña,
+ni token, ni clave de API, ni frase de paso, en ningún sitio. Las páginas dicen
+qué cuenta se usa y dónde viven sus credenciales, nunca su valor.

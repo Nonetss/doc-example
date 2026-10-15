@@ -1,12 +1,12 @@
 ---
-titulo: Entities
-descripcion: One YAML file per entity, holding only the fields its type declares, with where its data comes from
+titulo: Entidades
+descripcion: Un fichero YAML por entidad, con solo los campos que declara su tipo, y de dónde proceden sus datos
 files: [entity]
 orden: 2
 actualizado: 2026-10-15
 ---
 
-## A file
+## Un fichero
 
 ```yaml
 # catalogo/machines/docker-01.yaml → id: docker-01
@@ -18,26 +18,26 @@ fuente: komodo
 actualizado: 2026-10-15
 ```
 
-- **The id is the file name:** lowercase, digits and hyphens. The extension is `.yaml`, never `.yml`. A file starting with `_` is not an entity.
-- **Only the fields its type declares,** every required one included. A `ref` must name an entity that exists, and a `ficha` a page that exists.
-- **Provenance:** `fuente` says where the data comes from (`manual`, or the panel it was read from) and `actualizado` its date. When the panel and the catalog disagree, the panel wins: fix the entity.
-- **One entity per file,** always, even for long lists.
-- **No secret,** not even for now.
+- **El id es el nombre del fichero:** minúsculas, dígitos y guiones. La extensión es `.yaml`, nunca `.yml`. Un fichero que empieza por `_` no es una entidad.
+- **Solo los campos que declara su tipo,** incluidos todos los obligatorios. Un `ref` debe nombrar una entidad que exista, y una `ficha` una página que exista.
+- **Procedencia:** `fuente` indica de dónde proceden los datos (`manual`, o el panel del que se leyeron) y `actualizado` su fecha. Cuando el panel y el catálogo discrepan, gana el panel: corrige la entidad.
+- **Una entidad por fichero,** siempre, incluso en listas largas.
+- **Ningún secreto,** ni siquiera de forma provisional.
 
-An entity that fails its type is left out of every table and reported, and the rest of the catalog is published.
+Una entidad que no cumple su tipo se queda fuera de todas las tablas y se reporta, y el resto del catálogo se publica.
 
-## Citing it from a page
+## Citarla desde una página
 
-- **In the header,** through a `ref` field declared under `cabecera`: `machines: [docker-01]`.
-- **In the text,** with a link: `[docker-01](catalogo:machines/docker-01)`.
+- **En la cabecera,** mediante un campo `ref` declarado bajo `cabecera`: `machines: [docker-01]`.
+- **En el texto,** con un enlace: `[docker-01](catalogo:machines/docker-01)`.
 
-Either way, the entity's [catalog page](reader.mdx) lists the page under "Páginas que la citan".
+De cualquiera de las dos formas, la [página de catálogo](reader.mdx) de la entidad lista la página en "Páginas que la citan".
 
-## YAML traps
+## Trampas de YAML
 
-- Text containing `: ` goes between quotes: `purpose: "The way in: Pangolin"`.
-- So does text starting with `[`, `{`, `*`, `&`, `!`, `%` or `@`, and text that reads as `yes`, `no`, `on`, `off`, `null` or a number.
-- Dates are always `YYYY-MM-DD`.
-- Ports with a slash (`53:53/udp`) go between quotes.
+- El texto que contiene `: ` va entre comillas: `purpose: "La vía de entrada: Pangolin"`.
+- También el texto que empieza por `[`, `{`, `*`, `&`, `!`, `%` o `@`, y el texto que se lee como `yes`, `no`, `on`, `off`, `null` o un número.
+- Las fechas son siempre `YYYY-MM-DD`.
+- Los puertos con barra (`53:53/udp`) van entre comillas.
 
-The editor marks all of these as you type: see [The editor](../publishing/editor.mdx).
+El editor marca todo esto mientras escribes: consulta [El editor](../publishing/editor.mdx).
