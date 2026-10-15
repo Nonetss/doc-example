@@ -1,0 +1,58 @@
+---
+titulo: The repository
+descripcion: Every file and folder a content repository may hold, and which names belong to the platform
+files: [doc-config, menu, page, type-declaration, entity, diagram-file, served-skill]
+actualizado: 2026-10-15
+---
+
+## The files
+
+<Entities type="files" group="kind" columns="path,required,purpose" />
+
+- **Declarations** are read first: they say what the rest may hold. When one is broken, the platform keeps serving the last valid version of all of them, so a typo never takes the site down.
+- **Content** is read with the pages. A broken page, entity or diagram is reported and the rest is published anyway.
+
+```
+doc.config.yaml          # the site
+menu.yaml                # the sidebar (optional)
+docs/
+├── index.mdx            # the home
+├── getting-started.mdx  # a page
+└── network/             # a section
+    ├── index.mdx        # its entry page
+    └── dns.mdx          # one of its pages
+catalogo/
+└── machines/            # a type: the folder name is its id
+    ├── _tipo.yaml       # its declaration
+    └── nas.yaml         # an entity: the file name is its id
+diagramas/
+└── network.yaml         # a diagram: the file name is its id
+skills/
+└── homelab/SKILL.md     # a skill served to other agents
+```
+
+<Diagram id="repository" />
+
+## Contract names and your names
+
+The platform reads a fixed set of names, and they are Spanish. They must be written exactly as they are, or the content stops validating:
+
+| Where | Contract names |
+| --- | --- |
+| Files and folders | `doc.config.yaml`, `menu.yaml`, `docs/`, `index.mdx`, `catalogo/`, `_tipo.yaml`, `diagramas/`, `skills/` |
+| `doc.config.yaml` | `nombre`, `descripcion`, `plataforma`, `cabecera` |
+| `menu.yaml` | `secciones`, `titulo`, `icono`, `descripcion`, `paginas`, `ruta` |
+| `_tipo.yaml` | `nombre`, `plural`, `icono`, `descripcion`, `etiqueta`, `campos`, `vista`, `columnas` |
+| A field | `tipo`, `opcional`, `descripcion`, `valores`, `a`, `de`, `campos` |
+| Every page header | `titulo`, `descripcion`, `icono`, `orden`, `actualizado` |
+| Every entity | `fuente`, `actualizado` |
+| A diagram | `titulo`, `descripcion`, `direccion`, `nodos`, `entidad`, `nombre`, `sub`, `tipo`, `conexiones`, `zonas` |
+| Links | `catalogo:` followed by a type, or by a type and an id |
+
+Everything else is yours, in whatever language you write: type ids, field names, enum values, the header fields you declare, folders, file names and every word of the pages. The platform knows nothing about your domain: a homelab declares machines and services, a shop would declare products and suppliers.
+
+## Names and paths
+
+- Files and folders are lowercase, with digits and hyphens: `new-stack.mdx`, `docker-01.yaml`. They become URLs and ids.
+- Field names are lowercase, with digits and underscores, and start with a letter: `public_ip`.
+- `docs/catalogo/` is reserved: the platform makes the catalog's pages there, so a page under it is reported and not published.

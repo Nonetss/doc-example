@@ -1,0 +1,37 @@
+---
+titulo: Sync and problems
+descripcion: How a push becomes the published site, what happens when something is wrong and where the problems show
+actualizado: 2026-10-15
+---
+
+<Diagram id="pipeline" />
+
+## Sync
+
+The platform keeps a clone of every content repository and syncs it:
+
+- at once, on every push to a repository hosted on the platform;
+- every five minutes, and when the platform starts;
+- when an admin presses **Sincronizar** in `/admin/content`.
+
+Each sync leaves the clone exactly as the branch is. If the remote does not answer, the platform keeps serving the last checkout and `/admin/content` shows the error.
+
+## Validation
+
+Every sync reads the repository in two steps:
+
+1. **The declarations:** `doc.config.yaml`, `menu.yaml` and every `_tipo.yaml`. If any of them is broken, the platform keeps the last valid declarations and logs every problem. Nothing else changes until they are fixed.
+2. **The content:** pages, entities and diagrams. Each one is checked on its own; a broken one is reported and the rest is published.
+
+## Where problems show
+
+- **On the page,** to admins only, above its body: the file, the line and what is wrong. Other readers see the page as it could be read.
+- **On the repository's home,** to admins: the problems of `menu.yaml`, of the diagrams and of files under `docs/catalogo/`.
+- **In the log,** once per commit, with the repository and the file.
+
+## Where do I find…?
+
+| I want to… | Page |
+| --- | --- |
+| Completion and validation while I write | [The editor](editor.mdx) |
+| An AI agent reading the documentation | [Agents](agents.mdx) |

@@ -1,0 +1,78 @@
+---
+titulo: Diagrams
+descripcion: A diagram is declared in its own YAML file under diagramas/ and shown in any page with the Diagram component
+files: [diagram-file]
+components: [diagram]
+actualizado: 2026-10-15
+---
+
+## Declared, not drawn
+
+A diagram says which boxes exist, how they connect and how they group; the platform lays them out. No coordinates, no hand-made SVG, no text art. Each diagram is a file of its own, `diagramas/<id>.yaml`, so it is written once and shown wherever it helps:
+
+```mdx
+<Diagram id="pipeline" />
+```
+
+This is the one on this site's home:
+
+<Diagram id="pipeline" />
+
+## The file
+
+```yaml
+# diagramas/komodo.yaml → id: komodo
+titulo: How Komodo deploys
+descripcion: Komodo tells Periphery on every server to bring the stacks up
+direccion: derecha
+nodos:
+  komodo: { entidad: services/komodo }
+  periphery: { nombre: Periphery, sub: agent on every server, tipo: entrada }
+  stacks: Stacks
+conexiones:
+  - komodo -> periphery: deploy
+  - periphery -> stacks
+zonas:
+  home: { titulo: Home, nodos: [komodo, periphery] }
+```
+
+| Key | What it is |
+| --- | --- |
+| `titulo` | Required. Its title, shown as its caption. |
+| `descripcion` | Required. What it shows, in one or two sentences: it is its text alternative and what agents read. |
+| `direccion` | Optional. `derecha` (left to right, the default) or `abajo` (top to bottom). Follow the flow: a chain of steps goes right, a hierarchy goes down. |
+| `nodos` | Required. The boxes, by id. |
+| `conexiones` | Optional. The arrows between them. |
+| `zonas` | Optional. Titled groups of boxes. |
+
+### Nodes
+
+A node's id is lowercase, with digits and hyphens, and local to the diagram (`nas`, not `node3`). A node is one of:
+
+- **An entity of the catalog:** `{ entidad: machines/nas }`. It takes its name, icon and link from the entity. Use it whenever the box exists in the catalog: the entity's page then lists the diagram.
+- **A named box:** `{ nombre: Periphery, sub: agent on every server }`. `sub` is a short line under the name.
+- **Just a name:** `stacks: Stacks`.
+
+Any of them takes `icono` (a Lucide icon name) and `tipo`: `entrada` where the flow starts, `almacen` for data (disks, registries, databases).
+
+### Connections
+
+`from -> to`, or `from -> to: label` with the label saying **what travels** along it, in a few words: "encrypted backup every night", not "connection". Both ends are node ids.
+
+### Zones
+
+Where things are (home, the VPS, outside) or which network they belong to: a `titulo` and the `nodos` it holds. A node goes in one zone at most.
+
+## What gets reported
+
+The platform checks every diagram against the catalog. An entity that does not exist, a connection to a node that is not declared, a node in two zones, a missing title or an unknown key are reported on the file **and** on every page that shows it; whatever is valid still renders. A `Diagram` with an unknown id renders a notice, and a fenced block with the language `diagram` inside a page is reported: diagrams live in `diagramas/`.
+
+## How it shows today
+
+Until the platform draws diagrams, one renders as text: its title and description as a caption, its zones with their boxes, and one line per connection ("Writer → Content repository: git push"), every entity linked to its page. It is also exactly what agents get in the page's Markdown. Writing them now costs nothing later: the format stays.
+
+## Guidelines
+
+- **One diagram, one idea.** Past about a dozen nodes, split it.
+- **Only the connections that matter** to understand the page; the rest goes in the text.
+- **Nothing sensitive** in labels or subtitles.

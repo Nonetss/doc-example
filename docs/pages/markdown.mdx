@@ -1,0 +1,58 @@
+---
+titulo: Markdown
+descripcion: What a page body may hold, how its links and images resolve, and what the platform refuses
+files: [page]
+orden: 2
+actualizado: 2026-10-15
+---
+
+## What it accepts
+
+- **GitHub-flavoured Markdown:** tables, task lists, strikethrough, autolinks and footnotes.
+- **Headings from `##`:** the title is the header's `titulo`, so a `#` heading in the body is reported. `##` and `###` headings make the page's "En esta página" index.
+- **Code blocks** keep their language and get a copy button.
+- **Alerts:** a quote that starts with `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` or `[!CAUTION]`.
+
+```mdx
+> [!WARNING]
+> This restarts the router.
+```
+
+> [!WARNING]
+> This restarts the router.
+
+- **Comments:** a comment between braces and `/* */` is dropped without a problem.
+
+## Links
+
+| To link to… | Write | It leads to |
+| --- | --- | --- |
+| Another page | Its relative path with `.mdx`: `[DNS](../network/dns.mdx#zones)` | That page, keeping the anchor |
+| An entity | `[docker-01](catalogo:machines/docker-01)` | The entity's page, or its [catalog page](../catalog/reader.mdx) when it has none |
+| A catalog type | `[Machines](catalogo:machines)` | The type's catalog page |
+| An outside site | The full `https://` URL | That site, in a new tab |
+
+A link to a page, type or entity that does not exist is reported and shown as plain text. Linking to an entity also counts as citing it: its page lists yours.
+
+## Images
+
+A relative path to a `png`, `jpg`, `jpeg`, `gif`, `webp`, `avif` or `svg` file under `docs/`, up to 10 MiB, usually in an `img/` folder next to the page:
+
+```mdx
+![The Komodo panel](img/panel.png)
+```
+
+The reader opens them enlarged with zoom. A missing image, or a link to any other kind of file, is reported. For a picture of how things connect, write a [diagram](../diagrams/index.mdx) instead.
+
+## What it refuses
+
+| Written | What happens |
+| --- | --- |
+| `import` or `export` | Reported on its line and left out |
+| An expression between braces | Reported and left out; the text around it renders |
+| A component the platform does not have | Reported, and a notice naming it renders in its place |
+| A platform component inside a paragraph | Reported: it goes in a block of its own |
+| A fenced block with the language `diagram` | Reported: diagrams go in `diagramas/` |
+| A page that cannot be parsed | Reported with the parser's line; only its header shows |
+
+Every problem names the file and the line. Admins see them above the page; other readers only see the page.

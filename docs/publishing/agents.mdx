@@ -1,0 +1,29 @@
+---
+titulo: Agents
+descripcion: How an AI agent reads the published documentation, and the skills a site serves to agents
+files: [served-skill]
+orden: 2
+actualizado: 2026-10-15
+---
+
+## The Markdown of every page
+
+Every page, catalog pages included, has its text as Markdown at its address followed by `/llm.txt`: the same text "Copiar en Markdown" copies, with every link as a full address. Two indexes, following llmstxt.org, list them:
+
+| Address | What it is |
+| --- | --- |
+| `/llms.txt` | Every repository, each page linked to its `llm.txt` with its description |
+| The repository's slug followed by `/llms.txt` | The same, for one repository |
+
+Pages are labelled with their group and sections ("Writing / Pages / The header"). They need the same credentials as the reader: a session, or an API key in the `x-api-key` header. Every user creates their keys on `/me`, where they get the instructions ready to paste into their AI.
+
+## Served skills
+
+`skills/<name>/SKILL.md` are skills the platform serves to other agents, so they know how to work with this site from any project. They follow the Agent Skills format: front matter with `name` and `description`, instructions below.
+
+- **Thin:** they say how to work and where to look, never what there is. A downloaded skill is a snapshot that goes stale; the documentation is read live.
+- **They point at pages** instead of copying procedures.
+- **Site-specific only:** what every site shares, the platform explains itself.
+- **No secret,** and no asking a person for one.
+
+This site serves `doc-writing`: look at `skills/doc-writing/SKILL.md`.

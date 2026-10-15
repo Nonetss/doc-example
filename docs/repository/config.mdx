@@ -1,0 +1,37 @@
+---
+titulo: Site configuration
+descripcion: doc.config.yaml gives the site its name, the contract version it follows and the extra fields of its page headers
+files: [doc-config]
+orden: 1
+actualizado: 2026-10-15
+---
+
+## The keys
+
+| Key | What it is |
+| --- | --- |
+| `nombre` | Required. The site's name, as the reader shows it. |
+| `descripcion` | Optional. One sentence on what the documentation is about. |
+| `plataforma` | Required. The major version of the contract, between quotes: `"1"`. |
+| `cabecera` | Optional. The extra fields the page headers of this site accept. |
+
+Any other key is reported. `doc.config.yaml` is a declaration: while it is broken, the platform keeps the last valid version.
+
+## Extra header fields
+
+Every page header already has `titulo`, `descripcion`, `icono`, `orden` and `actualizado` (see [The header](../pages/header.mdx)). `cabecera` adds the site's own, each declared with a [field kind](catalogo:field-kinds), exactly like a catalog field:
+
+```yaml
+cabecera:
+  machines:
+    tipo: lista
+    de: { tipo: ref, a: machines }
+    opcional: true
+    descripcion: Machines the page is about
+```
+
+A page can then say `machines: [nas, pve-01]`. Each id is checked against the catalog, the page header shows them as links to their entities, and each entity's page lists the page under "Páginas que la citan".
+
+- `cabecera` cannot redeclare the common fields.
+- A page using a field that is not declared here is reported: declare it first.
+- This site declares `files`, `components` and `open_questions`; look at its `doc.config.yaml`.

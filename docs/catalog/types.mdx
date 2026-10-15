@@ -1,0 +1,71 @@
+---
+titulo: Types
+descripcion: How to declare a catalog type in _tipo.yaml, its fields and the kinds they can have
+files: [type-declaration]
+orden: 1
+actualizado: 2026-10-15
+---
+
+## A declaration
+
+```yaml
+# catalogo/machines/_tipo.yaml
+nombre: Machine            # singular
+plural: Machines
+icono: server              # a Lucide icon name
+descripcion: Servers, VMs and VPS. The id is the hostname in lowercase
+
+etiqueta: name             # the field shown as each entity's name; the id without it
+
+campos:
+  name:
+    tipo: texto
+    opcional: true
+    descripcion: Only when it is written differently from the id (PVE-01)
+  ip:
+    tipo: ip
+  location:
+    tipo: ref
+    a: locations
+  kind:
+    tipo: enum
+    valores: [physical, vm, vps]
+
+vista:
+  columnas: [name, ip, kind, location]   # the type's table
+```
+
+- **The type's id** is its folder name: lowercase, digits and hyphens.
+- **Field names** are lowercase, digits and underscores, starting with a letter.
+- **Every field is required** unless it says `opcional: true`.
+- **`descripcion` on every field that is not obvious:** the editor shows it as help and agents read it.
+- `etiqueta` and every column of `vista.columnas` must be declared fields; columns also accept `id`, `fuente` and `actualizado`.
+- `fuente` and `actualizado` are never declared: every entity accepts them.
+- `_tipo.yaml` is a declaration: while one is broken, the platform keeps the last valid version of every declaration.
+
+## Field kinds
+
+<Entities type="field-kinds" group="family" columns="id,value,takes,example" />
+
+Kinds nest: a `lista` of `objeto`, each holding another `lista`, is valid.
+
+```yaml
+containers:
+  tipo: lista
+  de:
+    tipo: objeto
+    campos:
+      name: { tipo: texto }
+      ports:
+        tipo: lista
+        opcional: true
+        de: { tipo: texto }
+        descripcion: Published:internal (8080:80)
+```
+
+The same kinds declare the extra header fields of [`doc.config.yaml`](../repository/config.mdx).
+
+## Before adding one
+
+- Look for an existing type that fits; create one only when none does.
+- After changing a `_tipo.yaml`, the existing entities must still validate: a new required field has to be filled in on every one of them.

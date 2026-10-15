@@ -1,0 +1,56 @@
+---
+titulo: Components
+descripcion: The three components a page may use, Callout, Entities and Diagram, and how to write them
+files: [page]
+components: [callout, entities, diagram]
+orden: 3
+actualizado: 2026-10-15
+---
+
+## The components
+
+<Entities type="components" columns="tag,purpose,attributes" />
+
+Each goes in a block of its own, with a blank line before and after. Attributes are literal strings between quotes, never expressions between braces. Any other component is reported and replaced by a notice.
+
+## Callout
+
+A highlighted note that holds Markdown:
+
+```mdx
+<Callout type="tip" title="Before you start">
+Keep the editor's schema catalog set: it marks most mistakes before you push.
+</Callout>
+```
+
+<Callout type="tip" title="Before you start">
+Keep the editor's schema catalog set: it marks most mistakes before you push.
+</Callout>
+
+`type` is `note` (the default), `info`, `tip`, `important`, `warning`, `caution` or `danger`. An unknown type is reported and renders as a note.
+
+## Entities
+
+The table of a catalog type, built from its entities when the site is read, so it never goes stale:
+
+```mdx
+<Entities type="field-kinds" group="family" columns="id,value,takes" />
+```
+
+<Entities type="field-kinds" group="family" columns="id,value,takes" />
+
+- `type` is the type's folder name in `catalogo/`.
+- `columns` chooses the fields, `id` included. Without it, the type's `vista.columnas`; without those, its label and every field.
+- `group` splits the table into one block per value, in the order of `valores` for an `enum`, with the entities that leave it out last.
+- Rows are ordered by label, and each label links to the entity's page or its catalog page. References show the label of what they point at, linked.
+- An unknown type, column or attribute, and every entity that fails its type, are reported on the page; the rest of the table still renders.
+
+## Diagram
+
+A diagram written in its own file under `diagramas/`, shown wherever a page needs it:
+
+```mdx
+<Diagram id="pipeline" />
+```
+
+The same diagram can be in any number of pages: this site shows `pipeline` on its home and on [Sync and problems](../publishing/index.mdx). How to write one is in [Diagrams](../diagrams/index.mdx).

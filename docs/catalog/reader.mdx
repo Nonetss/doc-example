@@ -1,0 +1,35 @@
+---
+titulo: In the reader
+descripcion: The pages the platform makes for the catalog, a table per type and a page per entity, without writing them
+files: [entity, type-declaration]
+orden: 3
+actualizado: 2026-10-15
+---
+
+## The pages it makes
+
+No MDX is written for them: the platform builds them from the catalog every time it reads the site.
+
+| Path | What it shows |
+| --- | --- |
+| `catalogo` | Every type, with how many entities it has and how many have a page |
+| `catalogo/<type>` | The type's table, with its `vista.columnas`, sortable and searchable |
+| `catalogo/<type>/<id>` | One entity: its fields, its page, the pages that cite it, the entities that point at it and the diagrams it is in |
+
+This site's are under "Reference" in the sidebar. Open [Files](catalogo:files) and then [menu.yaml](catalogo:files/menu): the entity's page lists the pages of this guide that cite it, and the diagram it is a node of.
+
+## An entity's page
+
+- **Its fields,** each shown by its kind: references and pages as links, lists joined, booleans as "Sí" or "No". Then `fuente`, when it has one.
+- **Página:** the page its first `ficha` field names, when it has one.
+- **Páginas que la citan:** every page whose header names it in a `ref` field, or whose text links to it.
+- **Referencias:** for each type with a `ref` field naming it, the table of those entities. A machine's page shows the stacks that run on it and the VMs it hosts.
+- **Diagramas:** every diagram that has it as a node.
+
+## Getting there
+
+- `catalogo:` links: to the entity's page when it has one, otherwise to its catalog page.
+- The label of every `Entities` table row, and every reference cell.
+- The menu: `catalogo` shows the catalog with every type, `catalogo/machines` one type. Without `menu.yaml`, the catalog is the sidebar's last section.
+
+Entity pages are not listed in the sidebar; type pages are, and the search finds them. Every one has its Markdown for agents like any page.

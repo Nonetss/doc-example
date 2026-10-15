@@ -1,0 +1,23 @@
+---
+titulo: The catalog
+descripcion: Repeated facts with the same shape live as data in catalogo/, declared by type, one entity per file
+files: [type-declaration, entity]
+actualizado: 2026-10-15
+---
+
+## Data or a page?
+
+Some facts repeat with the same shape: every machine has an IP, a location and an operating system. Written in pages they get copied, drift apart and can't be listed. In the catalog they are **data**: one file per thing, checked against its type, shown as tables and linked from the pages that talk about them.
+
+- **The catalog** holds the facts: the IP, the location, the version.
+- **A page** holds the explanation: why it is set up that way, how to change it. It cites the entities instead of copying them.
+
+## How it is made
+
+1. **A type** is a folder under `catalogo/` with its declaration, `_tipo.yaml`: its name, its fields and the kind of each one. See [Types](types.mdx).
+2. **An entity** is one YAML file in that folder; the file name is its id. See [Entities](entities.mdx).
+3. **The reader** shows it: a table in any page with the `Entities` component, and a page per type and per entity. See [In the reader](reader.mdx).
+
+The platform does not know any type: a site declares its own. This site's catalog describes the platform's contract itself, so its tables are the reference of this guide: [files](catalogo:files), [field kinds](catalogo:field-kinds), [header fields](catalogo:header-fields) and [components](catalogo:components).
+
+<Diagram id="repository" />

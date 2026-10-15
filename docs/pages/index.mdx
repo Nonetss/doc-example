@@ -1,0 +1,38 @@
+---
+titulo: Pages
+descripcion: A page is an MDX file under docs/; its path is its URL, and it is read without running anything
+files: [page]
+actualizado: 2026-10-15
+---
+
+## Files and paths
+
+Every `docs/**/*.mdx` file is a page. Its path is its file path without `.mdx`, and it is published at the repository's slug followed by that path:
+
+| File | Path |
+| --- | --- |
+| `docs/index.mdx` | The repository's home |
+| `docs/getting-started.mdx` | `getting-started` |
+| `docs/network/index.mdx` | `network`: the folder's entry page |
+| `docs/network/dns.mdx` | `network/dns` |
+
+Every folder is a section, titled by its `index.mdx`, or by the folder's name when it has none. A section's page lists its pages and subsections as cards after its body.
+
+## Nothing runs
+
+A page is Markdown plus the platform's [components](components.mdx). The platform turns it into a tree without running anything, so `import`, `export` and expressions between braces are reported and left out. What it cannot read it reports as a problem and renders the rest: a broken page never takes the others down.
+
+## Where do I find…?
+
+| I want to… | Page |
+| --- | --- |
+| Know which header fields a page has | [The header](header.mdx) |
+| Write the body: Markdown, alerts, links, images | [Markdown](markdown.mdx) |
+| Show a table of the catalog, a note or a diagram | [Components](components.mdx) |
+
+## Good habits
+
+- One idea per paragraph, straight to the point: someone reads it who was not there.
+- A procedure is a page of its own with numbered steps, so a person and an agent can follow it the same way.
+- Repeated facts with the same shape go to the [catalog](../catalog/index.mdx), and the page cites them instead of copying them.
+- Never write a secret: write where it lives and which account to use.

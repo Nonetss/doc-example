@@ -1,37 +1,31 @@
 ---
-titulo: Homelab
-descripcion: The home servers, services and backups, and how it all fits together
-icono: house
+titulo: Writing documentation
+descripcion: How to write a content repository the doc platform publishes, from the first page to the menu, the catalog and the diagrams
 ---
 
-Everything running at home and on the VPS: what each thing is, where it runs and how it is kept. If this is your first time here, start with [Getting started](getting-started.mdx).
+The platform does not hold any documentation itself: it reads it from a **content repository**, a git repository with pages in MDX and data in YAML. This site is one of them, and it explains how to write one. Everything it describes it also uses, so its own files are the examples: its [menu](repository/menu.mdx) is a `menu.yaml`, its [reference tables](catalogo:files) come from its catalog and the diagrams below are files under `diagramas/`.
 
-## Services
-
-<Entities type="services" group="category" columns="name,status,summary" />
-
-## Machines
-
-<Entities type="machines" />
+If this is your first time, start with [Getting started](getting-started.mdx).
 
 ## How it all fits together
 
-```diagram
-direction: right
-zones:
-  outside:
-    title: From outside
-    nodes: [vps]
-  home:
-    title: Home
-    nodes: [docker, nas, pve]
-nodes:
-  vps: { entity: machines/vps-01 }
-  docker: { entity: machines/docker-01 }
-  nas: { entity: machines/nas }
-  pve: { entity: machines/pve-01 }
-edges:
-  - vps -> docker: Pangolin tunnel
-  - pve -> docker: hosts it
-  - docker -> nas: Duplicati backups
-```
+<Diagram id="pipeline" />
+
+You only write files and push them. The platform syncs the repository, checks every file against its contract and publishes what is valid: the web for people, the schemas your editor completes with, and the Markdown agents read.
+
+## What a repository holds
+
+<Entities type="files" />
+
+<Diagram id="repository" />
+
+## Where do I find…?
+
+| I want to… | Page |
+| --- | --- |
+| Start a repository and see it published | [Getting started](getting-started.mdx) |
+| Choose what shows in the sidebar | [The menu](repository/menu.mdx) |
+| Write a page | [Pages](pages/index.mdx) |
+| Keep repeated facts as data | [The catalog](catalog/index.mdx) |
+| Draw how things connect | [Diagrams](diagrams/index.mdx) |
+| Know why my change does not show | [Sync and problems](publishing/index.mdx) |

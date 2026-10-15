@@ -1,14 +1,50 @@
 ---
 titulo: Getting started
-descripcion: The order to read the documentation in, the first time
-icono: compass
-orden: 1
+descripcion: Create a content repository, register it on the platform and see your first page published
+files: [doc-config, page]
+actualizado: 2026-10-15
 ---
 
-1. **The network**: how the home names resolve and how you get in from outside. Start with [DNS](network/dns.mdx).
-2. **The containers**: almost everything runs on [docker-01](catalogo:machines/docker-01) and is managed with [Komodo](containers/komodo/index.mdx).
-3. **The backups**: what is backed up, where, and how to restore it, in [Duplicati](backups/duplicati/index.mdx).
+## 1. Create the repository
 
-<Callout type="info">
-Credentials are not in the documentation: they live in the platform's vault. Pages say which connection to use, never the password.
-</Callout>
+A content repository needs two things: `doc.config.yaml` and a `docs/` folder with at least its home, `docs/index.mdx`.
+
+```yaml
+# doc.config.yaml
+nombre: Homelab
+descripcion: The home servers and how they are kept
+plataforma: "1"
+```
+
+```mdx
+---
+titulo: Homelab
+descripcion: The home servers and how they are kept
+---
+
+Everything that runs at home, and where to find it.
+```
+
+`plataforma` goes between quotes: it is the version of the contract the repository follows, not a number. The rest of `doc.config.yaml` is in [Site configuration](repository/config.mdx).
+
+The quickest start is to copy this repository and replace its pages and catalog with your own.
+
+## 2. Register it
+
+An admin adds it at `/admin/content`, with a name, a **slug** (its name in the URLs, fixed once created) and where it comes from:
+
+- **External URL:** an `https://` git URL (GitHub, Gitea…) and the branch to publish. A private repository carries its credentials in the URL; the platform never shows or logs them.
+- **Hosted on the platform:** the platform is the git server. Its card shows the URL to clone and push, `/git/` followed by the slug and `.git`. There are no credentials: anyone who reaches the platform can push to it.
+
+## 3. Push
+
+Every push to the published branch is synced at once on a hosted repository, and within five minutes on an external one (or right away with **Sincronizar** in `/admin/content`). The home is then at `/` followed by the slug.
+
+## 4. Set up the editor
+
+Point your editor at the platform's schema catalog and every YAML file gets completion and validation: see [The editor](publishing/editor.mdx). It is the fastest way to learn the contract, since the editor suggests every key and marks every mistake.
+
+## Next
+
+- [The repository](repository/index.mdx): every file and folder it may hold.
+- [Pages](pages/index.mdx): how to write them.

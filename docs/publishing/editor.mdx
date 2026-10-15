@@ -1,0 +1,40 @@
+---
+titulo: The editor
+descripcion: One editor setting gives every YAML file of the repository completion and validation from the platform
+files: [doc-config, menu, type-declaration, entity, diagram-file]
+orden: 1
+actualizado: 2026-10-15
+---
+
+## The setting
+
+The platform serves, without signing in, a **schema catalog** per repository. With the Red Hat YAML extension (`redhat.vscode-yaml`, in VS Code and Cursor), one setting is enough:
+
+```json
+{
+  "yaml.schemaStore.url": "https://<platform>/api/v1/content/schemas/<slug>"
+}
+```
+
+Copy the exact URL from the repository's card in `/admin/content`.
+
+- **The content repository on its own:** in its `.vscode/settings.json`, committed, so whoever clones it gets completion.
+- **A workspace with several folders:** in the workspace's settings; the extension ignores this one in a folder's `.vscode/`.
+
+## What it completes
+
+| File | What the editor knows |
+| --- | --- |
+| `doc.config.yaml` | Every key, and the field kinds of `cabecera` |
+| `menu.yaml` | Every key, the paths an entry can name (pages, folders, `catalogo` and every type) and the icon names |
+| `diagramas/*.yaml` | Every key, the entities a node can be and the icon names |
+| `_tipo.yaml` | Every key, the field kinds, the types a `ref` can point at and the icon names |
+| An entity | Its type's fields with their descriptions, the values of each `enum`, the ids each `ref` accepts and the pages a `ficha` can name |
+
+Nothing is generated or committed: a new type, entity or page shows up in the suggestions after the sync that brings it. If it doesn't, reopen the file or reload the window.
+
+## Good to know
+
+- The setting replaces SchemaStore's public catalog in that window, so files like `compose.yml` lose their completion while it is set.
+- The catalog exposes names, descriptions, ids and page paths; never the text of the pages, the values of the entities or the repository's URL.
+- In development, the editor does not trust the local certificate: point it at production, or set `"http.proxyStrictSSL": false` in your user settings while you develop.
