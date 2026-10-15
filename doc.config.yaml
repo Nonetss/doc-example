@@ -16,12 +16,15 @@ cabecera:
   services:
     tipo: lista
     de: { tipo: ref, a: services }
+    opcional: true
     descripcion: Services the page is about
   machines:
     tipo: lista
     de: { tipo: ref, a: machines }
+    opcional: true
     descripcion: Machines the page is about
   open_questions:
     tipo: lista
     de: { tipo: texto }
+    opcional: true
     descripcion: Questions still open; a question round answers them (/questions)
